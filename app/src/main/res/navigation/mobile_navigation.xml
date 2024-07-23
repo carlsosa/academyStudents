@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.student.unicdastudentsapp.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_pensum"
+        android:name="com.student.unicdastudentsapp.ui.pensum.PensumFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_pensum" />
 
     <fragment
         android:id="@+id/nav_slideshow"
