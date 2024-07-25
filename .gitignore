@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+/.idea/AppInsightsSettings.xml
+/.idea/vcs.xml
