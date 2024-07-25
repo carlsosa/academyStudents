@@ -1,13 +1,13 @@
-package com.student.unicdastudentsapp.ui.home
+package com.student.unicdastudentsapp.ui.calendario
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class CalendarioViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "Hello World!"
+        value = "Hello World Unicda"
     }
     val text: LiveData<String> = _text
 }

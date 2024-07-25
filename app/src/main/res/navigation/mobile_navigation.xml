@@ -6,20 +6,35 @@
     app:startDestination="@+id/nav_home">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.student.unicdastudentsapp.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_perfil"
+        android:name="com.student.unicdastudentsapp.ui.perfil.PerfilFragment"
+        android:label="@string/menu_perfil"
+        tools:layout="@layout/fragment_perfil" />
 
     <fragment
         android:id="@+id/nav_pensum"
         android:name="com.student.unicdastudentsapp.ui.pensum.PensumFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_pensum"
         tools:layout="@layout/fragment_pensum" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.student.unicdastudentsapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_calendar"
+        android:name="com.student.unicdastudentsapp.ui.calendario.CalendarioFragment"
+        android:label="@string/menu_calendario"
+        tools:layout="@layout/fragment_calendario" />
+    <fragment
+        android:id="@+id/nav_subjects"
+        android:name="com.student.unicdastudentsapp.ui.materias.MateriasFragment"
+        android:label="@string/menu_subjects"
+        tools:layout="@layout/fragment_materias" />
+    <fragment
+        android:id="@+id/nav_news"
+        android:name="com.student.unicdastudentsapp.ui.notificaciones.NotificacionesFragment"
+        android:label="@string/menu_news"
+        tools:layout="@layout/fragment_notificaciones" />
+    <fragment
+        android:id="@+id/nav_version"
+        android:name="com.student.unicdastudentsapp.ui.acercade.AcercaFragment"
+        android:label="@string/menu_version"
+        tools:layout="@layout/fragment_acerca" />
 </navigation>

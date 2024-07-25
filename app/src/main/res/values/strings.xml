@@ -7,12 +7,12 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Configuracion</string>
 
-    <string name="menu_home">Perfil</string>
-    <string name="menu_gallery">Pensum</string>
-    <string name="menu_slideshow">Calendario</string>
+    <string name="menu_perfil">Perfil</string>
+    <string name="menu_pensum">Pensum</string>
+    <string name="menu_calendario">Calendario</string>
     <string name="menu_subjects">Materias</string>
     <string name="menu_news">Notificaciones</string>
-    <string name="menu_version">Version</string>
+    <string name="menu_version">Acerca de</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
