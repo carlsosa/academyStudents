@@ -28,7 +28,7 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:layout_gravity="center"
         android:textColor="@color/white"
-        android:text="Carlos Sosa - 2021-30-1-0017"
+        android:text="Carlos Sosa  2021-30-1-0017"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 </LinearLayout>

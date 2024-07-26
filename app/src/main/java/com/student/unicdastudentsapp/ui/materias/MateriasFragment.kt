@@ -1,31 +1,42 @@
 package com.student.unicdastudentsapp.ui.materias
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.student.unicdastudentsapp.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.student.unicdastudentsapp.databinding.FragmentMateriasBinding
 
 class MateriasFragment : Fragment() {
-
+    private var _binding: FragmentMateriasBinding? = null
+    private val binding get() = _binding!!
     companion object {
         fun newInstance() = MateriasFragment()
-    }
-
-    private val viewModel: MateriasViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_materias, container, false)
+        val subjetViewModel =
+            ViewModelProvider(this).get(MateriasViewModel::class.java)
+        _binding = FragmentMateriasBinding.inflate(inflater, container, false)
+
+        val recyclerView = _binding!!.recyclerView
+        recyclerView.setHasFixedSize(true)
+        val context = requireContext()
+        val linearLayoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = linearLayoutManager
+        val adapter = MateriaAdapter(subjetViewModel.qt1)
+        recyclerView.adapter = adapter
+
+        val root: View = binding.root
+        return root
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
