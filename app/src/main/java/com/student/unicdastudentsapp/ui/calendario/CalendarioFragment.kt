@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.student.unicdastudentsapp.databinding.FragmentCalendarioBinding
 import java.util.TimeZone
 
-class CalendarioFragment() : Fragment() {
+class CalendarioFragment : Fragment() {
 
     private var _binding: FragmentCalendarioBinding? = null
 
