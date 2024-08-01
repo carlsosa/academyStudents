@@ -1,4 +1,4 @@
 package com.student.unicdastudentsapp.ui.data.model
 
-class Event {
+data class Event(val date: String, val event: String) {
 }

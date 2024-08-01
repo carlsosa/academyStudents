@@ -1,22 +1,23 @@
 package com.student.unicdastudentsapp.ui.calendario
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CalendarView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.applandeo.materialcalendarview.CalendarDay
+import com.applandeo.materialcalendarview.CalendarWeekDay
+import com.applandeo.materialcalendarview.listeners.OnCalendarDayClickListener
 import com.student.unicdastudentsapp.databinding.FragmentCalendarioBinding
-import java.util.TimeZone
+import java.util.Calendar
 
 class CalendarioFragment : Fragment() {
 
     private var _binding: FragmentCalendarioBinding? = null
 
-    lateinit var dateSel: TextView
-    lateinit var calendarView: CalendarView
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -31,25 +32,36 @@ class CalendarioFragment : Fragment() {
 
         _binding = FragmentCalendarioBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        dateSel = binding.idDateShow
-        calendarView = binding.calendarView
-        calendarView.firstDayOfWeek =2
-        calendarView
-            .setOnDateChangeListener(
-                CalendarView.OnDateChangeListener { view, year, month, dayOfMonth ->
-                    val Date = (dayOfMonth.toString() + "-"
-                            + (month + 1) + "-" + year)
-                    dateSel.setText(Date)
 
-                });
+        var calendarView =  binding.calendarView
+        var currentDate = Calendar.getInstance();
+        calendarView.setDate(currentDate);
+        calendarView.setFirstDayOfWeek(CalendarWeekDay.MONDAY)
+        calendarView.setCalendarDays(calendarioViewModel.getEventDays());
+        // on click
+        calendarView.setOnCalendarDayClickListener(object : OnCalendarDayClickListener {
+            fun onDayClick(calendarDay: CalendarDay) {
+                val clickedDayCalendar = calendarDay.calendar
+                var date = clickedDayCalendar.time.toString()
+               // var events =calendarioViewModel.findEventsByDate(date);
+            }
 
+            override fun onClick(calendarDay: CalendarDay) {
+                TODO("Not yet implemented")
+               var date = calendarDay.calendar.time.toString()
+                //var events =calendarioViewModel.findEventsByDate(date);
 
+            }
+        })
         return root
     }
 
     override fun onDestroyView() {
+
         super.onDestroyView()
         _binding = null
     }
+
+
 
 }
