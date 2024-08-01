@@ -42,14 +42,13 @@ class CalendarioFragment : Fragment() {
         calendarView.setOnCalendarDayClickListener(object : OnCalendarDayClickListener {
             fun onDayClick(calendarDay: CalendarDay) {
                 val clickedDayCalendar = calendarDay.calendar
-                var date = clickedDayCalendar.time.toString()
-               // var events =calendarioViewModel.findEventsByDate(date);
+                var date = clickedDayCalendar.time.date.toString()
+                var events =calendarioViewModel.findEventsByDate(date);
             }
 
             override fun onClick(calendarDay: CalendarDay) {
-                TODO("Not yet implemented")
-               var date = calendarDay.calendar.time.toString()
-                //var events =calendarioViewModel.findEventsByDate(date);
+               var date = calendarDay.calendar.time.date.toString()
+                var events =calendarioViewModel.findEventsByDate(date);
 
             }
         })

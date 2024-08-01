@@ -25,24 +25,24 @@ import java.util.Calendar
         calendar.set(2024,8-1, 8)
         var calendarDay =  CalendarDay(calendar);
         calendarDays.add(calendarDay);
-        events.add(Event(calendarDay.calendar.time.toString(),"Examen Parcial"))
+        events.add(Event(calendarDay.calendar.time.date.toString(),"Examen Parcial"))
 
         var cal1 = Calendar.getInstance();
         cal1.set(2024,8-1, 3)
         var calendarDay1 =  CalendarDay(cal1);
-        events.add(Event(calendarDay1.calendar.time.toString(),"Examen Parcial 2"))
+        events.add(Event(calendarDay1.calendar.time.date.toString(),"Examen Parcial 2"))
         calendarDays.add(calendarDay1);
 
         var cal2 = Calendar.getInstance();
         cal2.set(2024,8-1, 15)
         var calendarDay2 =  CalendarDay(cal2);
         calendarDays.add(calendarDay2);
-        events.add(Event(calendarDay2.calendar.time.toString(),"Examen Final"))
+        events.add(Event(calendarDay2.calendar.time.date.toString(),"Examen Final"))
 
         var cal3 = Calendar.getInstance();
         cal3.set(2024,8-1, 15)
         var calendarDay3 =  CalendarDay(cal2);
-        events.add(Event(calendarDay3.calendar.time.toString(),"Fin Cuatrimestre"))
+        events.add(Event(calendarDay3.calendar.time.date.toString(),"Fin Cuatrimestre"))
 
         calendarDays.add(calendarDay3);
 
@@ -53,7 +53,7 @@ import java.util.Calendar
         return calendarDays;
     }
 
-   fun findEventsByDate(cal: String): List<Event> {
-        return events.filter { it.date == cal }
+   fun findEventsByDate(cal: String): List<String> {
+        return events.filter { it.date == cal }.map { it.event }
    }
 }
