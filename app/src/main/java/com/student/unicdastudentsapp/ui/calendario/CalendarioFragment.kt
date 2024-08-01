@@ -4,15 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CalendarView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.student.unicdastudentsapp.databinding.FragmentCalendarioBinding
+import java.util.TimeZone
 
-class CalendarioFragment : Fragment() {
+class CalendarioFragment() : Fragment() {
 
     private var _binding: FragmentCalendarioBinding? = null
 
+    lateinit var dateSel: TextView
+    lateinit var calendarView: CalendarView
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -27,11 +31,19 @@ class CalendarioFragment : Fragment() {
 
         _binding = FragmentCalendarioBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        dateSel = binding.idDateShow
+        calendarView = binding.calendarView
+        calendarView.firstDayOfWeek =2
+        calendarView
+            .setOnDateChangeListener(
+                CalendarView.OnDateChangeListener { view, year, month, dayOfMonth ->
+                    val Date = (dayOfMonth.toString() + "-"
+                            + (month + 1) + "-" + year)
+                    dateSel.setText(Date)
 
-        val textView: TextView = binding.textSlideshow
-        calendarioViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+                });
+
+
         return root
     }
 
@@ -39,4 +51,5 @@ class CalendarioFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

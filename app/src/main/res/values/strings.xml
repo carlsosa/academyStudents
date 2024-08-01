@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Academy Unicda</string>
+    <string name="app_name">Unicda Academy</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Bienvenido</string>
@@ -22,4 +22,5 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="acerca">Esta app movil es un proyecto final de la Materia Prog. Movil I de UNICDA, el cual es una propuesta de app movil para los estudiantes de la universidad. </string>
 </resources>
