@@ -41,13 +41,11 @@ class MateriaAdapter(private val subjets: List<Subjets>) :
         materiaViewHolder.profesor.text = subject.profesor?.getCompleteName()
         materiaViewHolder.room.text = subject.classroom
         materiaViewHolder.logo.setImageResource(subject.logoId)
-        // Set click listener for the item view
-        materiaViewHolder.logo.setOnClickListener {
+        materiaViewHolder.itemView.setOnClickListener {
             onClickListener?.onClick(idx,subject)
         }
     }
 
-    // Set the click listener for the adapter
     fun setOnClickListener(listener: OnClickListener?) {
         this.onClickListener = listener
     }

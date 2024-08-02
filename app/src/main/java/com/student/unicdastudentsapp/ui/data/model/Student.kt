@@ -13,6 +13,7 @@ data class Student(val name: String,val lastName: String, val id: Long) : Serial
     var password: String ="";
     var haveDebt: Boolean = false;
     var current_quarter: Int = 0;
+    // user relationshio with dummy subjects
     var SubjectsList = mutableListOf<Subjets>();
     var pensumID: Int = 0;
     var academicIndex: Int =0;

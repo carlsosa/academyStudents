@@ -1,15 +1,17 @@
 package com.student.unicdastudentsapp.ui.notificaciones
 
-import androidx.fragment.app.viewModels
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.FragmentNotificacionesBinding
+import com.student.unicdastudentsapp.ui.data.model.News
 
 
 class NotificacionesFragment : Fragment() {
@@ -43,6 +45,13 @@ class NotificacionesFragment : Fragment() {
         recyclerView.layoutManager = linearLayoutManager
         val adapter = NotificacionesAdapter(viewModel1.n1)
         recyclerView.adapter = adapter
+        adapter.setOnClickListener(object: NotificacionesAdapter.OnClickListener{
+            override fun onClick(position: Int, model: News) {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(model.link))
+                startActivity(browserIntent)
+            }
+
+        })
 
         val root: View = binding.root
         return root
