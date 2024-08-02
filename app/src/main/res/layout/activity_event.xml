@@ -20,7 +20,7 @@
         android:id="@+id/eventImage"
         android:layout_width="match_parent"
         android:layout_height="194dp"
-        app:srcCompat="@drawable/foricda"
+        app:srcCompat="@drawable/dominico2"
         android:scaleType="centerCrop"
         android:contentDescription=""
         />

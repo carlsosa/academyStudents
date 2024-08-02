@@ -4,6 +4,7 @@ import android.icu.text.DateFormat
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
+import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.ActivityEventBinding
 import com.student.unicdastudentsapp.ui.data.model.Event
 import java.util.Calendar
@@ -23,6 +24,7 @@ class EventActivity : AppCompatActivity() {
         val title = binding.eventTitle
         val date = binding.eventDate
         val desc = binding.eventDesc
+        val img  = binding.eventImage.setImageResource(R.drawable.dominico2)
         val events = intent.extras?.get("EXTRA_EVENT") as List<Event>
         title.text = "CALENDARIO ADMINISTRATIVO " +
                 Calendar.getInstance().get(Calendar.YEAR)

@@ -39,6 +39,6 @@ class MateriaAdapter(private val subjets: List<Subjets>) :
         materiaViewHolder.date.text = subjets[idx].date_hour
         materiaViewHolder.profesor.text = subjets[idx].profesor?.getCompleteName()
         materiaViewHolder.room.text = subjets[idx].classroom
-        materiaViewHolder.logo.setImageResource(R.drawable.purplebook)
+        materiaViewHolder.logo.setImageResource(subjets[idx].logoId)
     }
 }
