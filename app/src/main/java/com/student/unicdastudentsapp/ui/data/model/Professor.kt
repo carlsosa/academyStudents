@@ -1,6 +1,8 @@
 package com.student.unicdastudentsapp.ui.data.model
 
-data class Professor(val id: Long, val name: String,val lastName: String ){
+import java.io.Serializable
+
+data class Professor(val id: Long, val name: String,val lastName: String ) : Serializable{
 
     fun getCompleteName(): String {
         return name + " " + lastName;

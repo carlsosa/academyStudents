@@ -1,6 +1,5 @@
 package com.student.unicdastudentsapp.ui.materias
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,7 @@ import com.student.unicdastudentsapp.ui.data.model.Subjets
 class MateriaAdapter(private val subjets: List<Subjets>) :
 
     RecyclerView.Adapter<MateriaAdapter.MateriaViewHolder>() {
+    private var onClickListener: OnClickListener? = null
 
     class MateriaViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
@@ -35,10 +35,30 @@ class MateriaAdapter(private val subjets: List<Subjets>) :
     }
 
     override fun onBindViewHolder(materiaViewHolder: MateriaViewHolder, idx: Int) {
-        materiaViewHolder.name.text = subjets[idx].code +": "+subjets[idx].name
-        materiaViewHolder.date.text = subjets[idx].date_hour
-        materiaViewHolder.profesor.text = subjets[idx].profesor?.getCompleteName()
-        materiaViewHolder.room.text = subjets[idx].classroom
-        materiaViewHolder.logo.setImageResource(subjets[idx].logoId)
+        var subject = subjets[idx]
+        materiaViewHolder.name.text = subject.code +": "+subject.name
+        materiaViewHolder.date.text = subject.date_hour
+        materiaViewHolder.profesor.text = subject.profesor?.getCompleteName()
+        materiaViewHolder.room.text = subject.classroom
+        materiaViewHolder.logo.setImageResource(subject.logoId)
+        // Set click listener for the item view
+        materiaViewHolder.logo.setOnClickListener {
+            onClickListener?.onClick(idx,subject)
+        }
     }
+
+    // Set the click listener for the adapter
+    fun setOnClickListener(listener: OnClickListener?) {
+        this.onClickListener = listener
+    }
+    interface OnClickListener {
+        fun onClick(position: Int, model: Subjets)
+
+    }
+
+
 }
+
+
+
+

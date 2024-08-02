@@ -1,6 +1,8 @@
 package com.student.unicdastudentsapp.ui.data.model
 
-data class Student(val name: String,val lastName: String, val id: Long){
+import java.io.Serializable
+
+data class Student(val name: String,val lastName: String, val id: Long) : Serializable{
     var age: Int = 0;
     var studyField: String ="";
     var date_init: String = "";

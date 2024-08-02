@@ -13,6 +13,10 @@
         android:theme="@style/Theme.UnicdaStudentsAPP"
         tools:targetApi="31">
         <activity
+            android:name=".ui.grades.GradeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.UnicdaStudentsAPP" />
+        <activity
             android:name=".ui.evento.EventActivity"
             android:exported="false"
             android:theme="@style/Theme.UnicdaStudentsAPP" />

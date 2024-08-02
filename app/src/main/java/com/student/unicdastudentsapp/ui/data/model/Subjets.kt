@@ -1,10 +1,10 @@
 package com.student.unicdastudentsapp.ui.data.model
 
 import com.student.unicdastudentsapp.R
-import com.student.unicdastudentsapp.ui.data.model.Professor
+import java.io.Serializable
 import kotlin.random.Random
 
-data class Subjets(val id: Long, val name: String, val quarter: Int){
+data class Subjets(val id: Long, val name: String, val quarter: Int) : Serializable {
     var code = "INGS-$id";
     var date_hour: String ="";
     var classroom: String = "E-"+Random.nextInt(205,405);
@@ -30,7 +30,7 @@ data class Subjets(val id: Long, val name: String, val quarter: Int){
         var x3= Subjets(110,"Algorítmica y Complejidad",1)
         x3.profesor= profes[1]
         x3.date_hour="Mar-Ju 8:00-10:00 P.M"
-        x3.logoId = R.drawable.iconALG
+        x3.logoId = R.drawable.iconalg
         var x4= Subjets(111,"Análisis matemático",1)
         x4.profesor = profes[3]
         x4.date_hour="Lun-Mi 8:00-10:00 P.M"

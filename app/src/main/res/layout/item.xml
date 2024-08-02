@@ -17,7 +17,9 @@
             android:id="@+id/avatar"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            tools:srcCompat="@drawable/subjects" />
+            android:focusable="true"
+            tools:srcCompat="@drawable/subjects"
+            android:contentDescription="@string/subejct_image"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,11 +30,12 @@
             <TextView
                 android:id="@+id/subject_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:fontFamily="sans-serif-black"
                 android:textColor="@color/black"
-                android:textSize="10sp"
-                tools:text="code+name" />
+                android:textSize="14sp"
+                tools:text="code+name"
+                />
             <TextView
                 android:id="@+id/subject_date"
                 android:layout_width="wrap_content"
@@ -44,14 +47,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/purple_700"
-                android:textSize="10sp"
+                android:textSize="14sp"
                 tools:text="profesor" />
             <TextView
                 android:id="@+id/subject_room"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/purple_700"
-                android:textSize="10sp"
+                android:textSize="14sp"
                 tools:text="aula" />
         </LinearLayout>
     </RelativeLayout>

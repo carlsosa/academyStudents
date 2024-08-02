@@ -1,19 +1,15 @@
 package com.student.unicdastudentsapp.ui.evento
 
-import android.icu.text.DateFormat
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.ui.AppBarConfiguration
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.ActivityEventBinding
 import com.student.unicdastudentsapp.ui.data.model.Event
 import java.util.Calendar
-import java.util.Locale
 
 
 class EventActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityEventBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
