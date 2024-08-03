@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Unicda Academy</string>
+    <string name="app_name">Academy Students</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Bienvenido</string>
@@ -14,14 +14,14 @@
     <string name="menu_news">Notificaciones</string>
     <string name="menu_version">Acerca de</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome!"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="prompt_email">Correo</string>
+    <string name="prompt_password">Clave</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="welcome">"Bienvenido!"</string>
+    <string name="invalid_username">No es un usuario valido</string>
+    <string name="invalid_password">Clave debe ser  >5 caracteres</string>
+    <string name="login_failed">Fallo de Auth</string>
     <string name="acerca">Esta app movil es un proyecto final de la Materia Prog. Movil I de UNICDA, el cual es una propuesta de app movil para los estudiantes de la universidad. </string>
 
     <string name="material_calendar_monday">L</string>
@@ -93,4 +93,6 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="subejct_image">subejct image</string>
+    <string name="academy_login">Academy Students</string>
+    <string name="title_activity_login">Academy Students</string>
 </resources>
