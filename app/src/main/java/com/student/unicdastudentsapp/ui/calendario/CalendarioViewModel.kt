@@ -4,12 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.applandeo.materialcalendarview.CalendarDay
-import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.ui.data.InitRepository
 import com.student.unicdastudentsapp.ui.data.model.Event
-import java.util.Calendar
 
- class CalendarioViewModel : ViewModel() {
+class CalendarioViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "Hello World Unicda"

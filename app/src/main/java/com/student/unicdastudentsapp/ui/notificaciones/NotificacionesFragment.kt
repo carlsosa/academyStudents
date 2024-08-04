@@ -19,6 +19,7 @@ class NotificacionesFragment : Fragment() {
     companion object {
         fun newInstance() = NotificacionesFragment()
     }
+
     private var _binding: FragmentNotificacionesBinding? = null
     private val binding get() = _binding!!
 
@@ -26,8 +27,6 @@ class NotificacionesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
     }
 
     override fun onCreateView(
@@ -45,7 +44,7 @@ class NotificacionesFragment : Fragment() {
         recyclerView.layoutManager = linearLayoutManager
         val adapter = NotificacionesAdapter(viewModel1.n1)
         recyclerView.adapter = adapter
-        adapter.setOnClickListener(object: NotificacionesAdapter.OnClickListener{
+        adapter.setOnClickListener(object : NotificacionesAdapter.OnClickListener {
             override fun onClick(position: Int, model: News) {
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(model.link))
                 startActivity(browserIntent)

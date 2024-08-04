@@ -1,16 +1,21 @@
 package com.student.unicdastudentsapp.ui.data.model
 
-data class StudentCalification (val idStudent: Long, val subjectId: Long){
-    var total_grade = 100.0;
-    var student_current_grade : Double = 0.0 / total_grade;
-
-    fun printDetails(): String {
-        if(student_current_grade >= 70.0){
-            return "Aprobado";
-        }else{
-            return "Reprobado";
-        }
-    }
-
-
+data class StudentCalification(
+    val idSt: Long,
+    val subjectId: Long,
+    var total_grade: Double,
+    var first_partial: Double,
+    var second_partial: Double,
+    var projects: Double,
+    var finalExam: Double,
+    var fulltext : String = StringBuilder().append("Primer Parcial: ").append(first_partial)
+        .append("\n")
+        .append("Segundo Parcial: ").append(second_partial)
+        .append("\n")
+        .append("Practicas: ").append(projects)
+        .append("\n")
+        .append("Examen Final: ").append(finalExam)
+        .append("\n")
+        .append("Total: ").append(total_grade).toString()
+) {
 }

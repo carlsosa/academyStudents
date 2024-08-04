@@ -34,27 +34,27 @@ class CalendarioFragment : Fragment() {
         _binding = FragmentCalendarioBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        var calendarView =  binding.calendarView
+        var calendarView = binding.calendarView
 
         // on click
         calendarView.setOnCalendarDayClickListener(object : OnCalendarDayClickListener {
             fun onDayClick(calendarDay: CalendarDay) {
                 val clickedDayCalendar = calendarDay.calendar
                 var date = clickedDayCalendar.time.date.toString()
-                var events =calendarioViewModel.findEventsByDate(date);
+                var events = calendarioViewModel.findEventsByDate(date);
                 val intent = Intent(context, EventActivity::class.java)
-                if(events.size > 0) {
+                if (events.size > 0) {
                     intent.putExtra("EXTRA_EVENT", events as Serializable)
                     startActivity(intent)
                 }
             }
 
             override fun onClick(calendarDay: CalendarDay) {
-               var date = calendarDay.calendar.time.date.toString()
-                var events =calendarioViewModel.findEventsByDate(date);
+                var date = calendarDay.calendar.time.date.toString()
+                var events = calendarioViewModel.findEventsByDate(date);
                 val context = requireContext()
                 val intent = Intent(context, EventActivity::class.java)
-                if(events.size > 0) {
+                if (events.size > 0) {
                     intent.putExtra("EXTRA_EVENT", events as Serializable)
                     startActivity(intent)
                 }
@@ -66,7 +66,7 @@ class CalendarioFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var calendarView =  binding.calendarView
+        var calendarView = binding.calendarView
         var currentDate = Calendar.getInstance();
         calendarView.setDate(currentDate);
         calendarView.setFirstDayOfWeek(CalendarWeekDay.MONDAY)
@@ -74,12 +74,12 @@ class CalendarioFragment : Fragment() {
             ViewModelProvider(this).get(CalendarioViewModel::class.java)
         calendarView.setCalendarDays(calendarioViewModel.getEventDays());
     }
+
     override fun onDestroyView() {
 
         super.onDestroyView()
         _binding = null
     }
-
 
 
 }

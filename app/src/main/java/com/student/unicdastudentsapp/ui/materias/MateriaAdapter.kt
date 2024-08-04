@@ -36,19 +36,20 @@ class MateriaAdapter(private val subjets: List<Subjets>) :
 
     override fun onBindViewHolder(materiaViewHolder: MateriaViewHolder, idx: Int) {
         var subject = subjets[idx]
-        materiaViewHolder.name.text = subject.code +": "+subject.name
+        materiaViewHolder.name.text = subject.code + ": " + subject.name
         materiaViewHolder.date.text = subject.date_hour
         materiaViewHolder.profesor.text = subject.profesor?.getCompleteName()
         materiaViewHolder.room.text = subject.classroom
         materiaViewHolder.logo.setImageResource(subject.logoId)
         materiaViewHolder.itemView.setOnClickListener {
-            onClickListener?.onClick(idx,subject)
+            onClickListener?.onClick(idx, subject)
         }
     }
 
     fun setOnClickListener(listener: OnClickListener?) {
         this.onClickListener = listener
     }
+
     interface OnClickListener {
         fun onClick(position: Int, model: Subjets)
 

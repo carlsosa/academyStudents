@@ -19,7 +19,7 @@
         android:layout_gravity="center"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="15dp"
-        app:srcCompat="@drawable/foricda" />
+        app:srcCompat="@drawable/dominico2" />
 
     <TextView
         android:id="@+id/welcome_user_textview"

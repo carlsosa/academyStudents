@@ -13,6 +13,7 @@ class NotificacionesAdapter(private val newsList: List<News>) :
 
     RecyclerView.Adapter<NotificacionesAdapter.NotificacionesViewHolder>() {
     private var onClickListener: NotificacionesAdapter.OnClickListener? = null
+
     class NotificacionesViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         var title: TextView = itemView.findViewById(R.id.news_title)
@@ -34,20 +35,22 @@ class NotificacionesAdapter(private val newsList: List<News>) :
     }
 
     override fun onBindViewHolder(notificacionesViewHolder: NotificacionesViewHolder, idx: Int) {
-         var news = newsList[idx]
+        var news = newsList[idx]
         notificacionesViewHolder.title.text = news.title
         notificacionesViewHolder.date.text = news.date
-        notificacionesViewHolder.content.text = news.message.substring(0,200) +".."
+        notificacionesViewHolder.content.text = news.message.substring(0, 200) + ".."
         notificacionesViewHolder.link.text = "Haga click para Leer más"
         notificacionesViewHolder.image.setImageResource(news.img)
         notificacionesViewHolder.itemView.setOnClickListener {
-            onClickListener?.onClick(idx,news)
+            onClickListener?.onClick(idx, news)
         }
 
     }
+
     fun setOnClickListener(listener: OnClickListener?) {
         this.onClickListener = listener
     }
+
     interface OnClickListener {
         fun onClick(position: Int, model: News)
 

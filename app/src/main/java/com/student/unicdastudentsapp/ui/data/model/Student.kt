@@ -5,6 +5,8 @@ import com.student.unicdastudentsapp.ui.data.InitRepository
 import java.io.Serializable
 
 data class Student(val name: String,val lastName: String, val id: Long) : Serializable{
+    var phoneNum: String =""
+    var matricula: String =""
     var age: Int = 0;
     var studyField: String ="";
     var date_init: String = "";
@@ -16,7 +18,7 @@ data class Student(val name: String,val lastName: String, val id: Long) : Serial
     var haveDebt: Boolean = false;
     var current_quarter: Int = 0;
     // user relationshio with dummy subjects
-    var SubjectsList : List<Subjets> ? = null;
+    var SubjectsList : List<Subjets> = mutableListOf<Subjets>();
     var pensumID: Int = 0;
     var academicIndex: Double =0.0;
     var genre : String =""

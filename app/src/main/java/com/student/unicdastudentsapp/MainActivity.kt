@@ -3,6 +3,8 @@ package com.student.unicdastudentsapp
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -22,12 +24,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-            super.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState)
 
-        if(!UserActive.isUserActive()) {
-           var intent = Intent(this,LoginActivity::class.java)
+        if (!UserActive.isUserActive()) {
+            var intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
-        }else {
+        } else {
             binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(binding.root)
             setSupportActionBar(binding.appBarMain.toolbar)
@@ -44,6 +46,8 @@ class MainActivity : AppCompatActivity() {
             )
             setupActionBarWithNavController(navController, appBarConfiguration)
             navView.setupWithNavController(navController)
+
+
         }
 
     }
@@ -51,11 +55,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
-        return true
+        var user = UserActive.getUser()
+        if (user != null) {
+            var imgView: ImageView = findViewById(R.id.imageView)
+            imgView.setImageResource(user.profile_image)
+            var welcomeMessage: TextView = findViewById(R.id.welcome_user_textview)
+            welcomeMessage.text = StringBuilder().append("Bienvenido, ").append(user.name)
+                .append(" ").append(user.matricula).toString();
+        }
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
 }

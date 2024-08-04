@@ -5,7 +5,5 @@ import com.student.unicdastudentsapp.ui.data.InitRepository
 import com.student.unicdastudentsapp.ui.data.model.News
 
 class NotificacionesViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
-
     var n1= InitRepository().getNews()
 }

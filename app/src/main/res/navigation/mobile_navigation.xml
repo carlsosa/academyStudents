@@ -37,4 +37,9 @@
         android:name="com.student.unicdastudentsapp.ui.acercade.AcercaFragment"
         android:label="@string/menu_version"
         tools:layout="@layout/fragment_acerca" />
+    <activity
+        android:id="@+id/nav_close"
+        android:name="com.student.unicdastudentsapp.ui.login.LoginActivity"
+        android:label="Cerrar Session"
+        tools:layout="@layout/activity_login" />
 </navigation>

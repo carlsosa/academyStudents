@@ -20,20 +20,20 @@ class EventActivity : AppCompatActivity() {
         val title = binding.eventTitle
         val date = binding.eventDate
         val desc = binding.eventDesc
-        val img  = binding.eventImage.setImageResource(R.drawable.dominico2)
+         binding.eventImage.setImageResource(R.drawable.dominico2)
         val events = intent.extras?.get("EXTRA_EVENT") as List<Event>
         title.text = "CALENDARIO ADMINISTRATIVO " +
                 Calendar.getInstance().get(Calendar.YEAR)
-        var eventInfo : String? = ""
-        if(events.isNotEmpty()) {
+        var eventInfo: String? = ""
+        if (events.isNotEmpty()) {
             date.text = events.get(0).self
             events.forEach {
-                eventInfo = eventInfo +"\n" + it.event
+                eventInfo = eventInfo + "\n" + it.event
 
             }
-            desc.text="Descripción del evento:" +"\n" +eventInfo
+            desc.text = "Descripción del evento:" + "\n" + eventInfo
 
-        }else{
+        } else {
             title.text = "No hay eventos";
         }
 

@@ -13,8 +13,6 @@ class LoginDataSource {
 
     fun login(username: String, password: String): Result<LoggedInUser> {
         try {
-            // TODO: handle loggedInUser authentication
-           // val fakeUser = LoggedInUser(UUID.randomUUID().toString(), "Jane Doe")
             val user = InitRepository().getUsers().filter { it.email==username }.filter { it.password==password }.get(0)
             val userDisplat = LoggedInUser(user.id.toString(),user.name)
             if(user != null){ UserActive.setUser(user)}

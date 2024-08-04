@@ -12,8 +12,6 @@ class PerfilFragment : Fragment() {
 
     private var _binding: FragmentPerfilBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -27,11 +25,18 @@ class PerfilFragment : Fragment() {
         _binding = FragmentPerfilBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        init(_binding!!, perfilViewModel)
+
+
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun init(_binding: FragmentPerfilBinding, vm: PerfilViewModel) {
+        vm.init(_binding);
     }
 }
