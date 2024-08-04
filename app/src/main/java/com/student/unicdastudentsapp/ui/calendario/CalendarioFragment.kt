@@ -19,8 +19,6 @@ class CalendarioFragment : Fragment() {
 
     private var _binding: FragmentCalendarioBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,51 +26,51 @@ class CalendarioFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val calendarioViewModel =
-            ViewModelProvider(this).get(CalendarioViewModel::class.java)
-
+        ViewModelProvider(this)[CalendarioViewModel::class.java]
         _binding = FragmentCalendarioBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        var calendarView = binding.calendarView
+        return root
+    }
 
-        // on click
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val calendarView = binding.calendarView
+        val calendarioViewModel =
+            ViewModelProvider(this)[CalendarioViewModel::class.java]
         calendarView.setOnCalendarDayClickListener(object : OnCalendarDayClickListener {
+            /*
             fun onDayClick(calendarDay: CalendarDay) {
                 val clickedDayCalendar = calendarDay.calendar
-                var date = clickedDayCalendar.time.date.toString()
-                var events = calendarioViewModel.findEventsByDate(date);
+                val date = clickedDayCalendar.time.date.toString()
+                val events = calendarioViewModel.findEventsByDate(date)
                 val intent = Intent(context, EventActivity::class.java)
-                if (events.size > 0) {
+                if (events.isNotEmpty()) {
                     intent.putExtra("EXTRA_EVENT", events as Serializable)
                     startActivity(intent)
                 }
             }
+             */
 
             override fun onClick(calendarDay: CalendarDay) {
-                var date = calendarDay.calendar.time.date.toString()
-                var events = calendarioViewModel.findEventsByDate(date);
+                val date = calendarDay.calendar.time.date.toString()
+                val events = calendarioViewModel.findEventsByDate(date)
                 val context = requireContext()
                 val intent = Intent(context, EventActivity::class.java)
-                if (events.size > 0) {
+                if (events.isNotEmpty()) {
                     intent.putExtra("EXTRA_EVENT", events as Serializable)
                     startActivity(intent)
                 }
 
             }
         })
-        return root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        var calendarView = binding.calendarView
-        var currentDate = Calendar.getInstance();
-        calendarView.setDate(currentDate);
+
+        val currentDate = Calendar.getInstance()
+        calendarView.setDate(currentDate)
         calendarView.setFirstDayOfWeek(CalendarWeekDay.MONDAY)
-        val calendarioViewModel =
-            ViewModelProvider(this).get(CalendarioViewModel::class.java)
-        calendarView.setCalendarDays(calendarioViewModel.getEventDays());
+        calendarView.setCalendarDays(calendarioViewModel.getEventDays())
+
     }
 
     override fun onDestroyView() {

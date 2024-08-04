@@ -35,9 +35,10 @@ class MateriaAdapter(private val subjets: List<Subjets>) :
     }
 
     override fun onBindViewHolder(materiaViewHolder: MateriaViewHolder, idx: Int) {
-        var subject = subjets[idx]
-        materiaViewHolder.name.text = subject.code + ": " + subject.name
-        materiaViewHolder.date.text = subject.date_hour
+        val subject = subjets[idx]
+        materiaViewHolder.name.text = StringBuilder().append(subject.code)
+            .append(": " ).append(subject.name).toString()
+        materiaViewHolder.date.text = subject.dateHour
         materiaViewHolder.profesor.text = subject.profesor?.getCompleteName()
         materiaViewHolder.room.text = subject.classroom
         materiaViewHolder.logo.setImageResource(subject.logoId)

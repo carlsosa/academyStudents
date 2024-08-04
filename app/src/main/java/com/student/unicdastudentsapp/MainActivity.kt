@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         if (!UserActive.isUserActive()) {
-            var intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         } else {
             binding = ActivityMainBinding.inflate(layoutInflater)
@@ -55,13 +55,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
-        var user = UserActive.getUser()
+        val user = UserActive.getUser()
         if (user != null) {
-            var imgView: ImageView = findViewById(R.id.imageView)
-            imgView.setImageResource(user.profile_image)
-            var welcomeMessage: TextView = findViewById(R.id.welcome_user_textview)
+            val imgView: ImageView = findViewById(R.id.imageView)
+            imgView.setImageResource(user.profileImage)
+            val welcomeMessage: TextView = findViewById(R.id.welcome_user_textview)
             welcomeMessage.text = StringBuilder().append("Bienvenido, ").append(user.name)
-                .append(" ").append(user.matricula).toString();
+                .append(" ").append(user.matricula).toString()
         }
         return super.onCreateOptionsMenu(menu)
     }

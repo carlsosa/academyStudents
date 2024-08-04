@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.student.unicdastudentsapp.databinding.FragmentAcercaBinding
 
 class AcercaFragment : Fragment() {
@@ -16,7 +15,6 @@ class AcercaFragment : Fragment() {
     private var _binding: FragmentAcercaBinding? = null
 
     private val binding get() = _binding!!
-    private val viewModel: AcercaViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +24,6 @@ class AcercaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel = viewModel
         _binding = FragmentAcercaBinding.inflate(inflater,container, false)
          val root: View = binding.root
         return root

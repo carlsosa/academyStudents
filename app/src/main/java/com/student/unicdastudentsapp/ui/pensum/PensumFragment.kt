@@ -7,26 +7,33 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.student.unicdastudentsapp.databinding.FragmentPensumBinding
 
 
 class PensumFragment : Fragment() {
 
     private var _binding: FragmentPensumBinding? = null
+    private val viewModel: PensumViewModel by viewModels()
+    private val minIndex: Int = 1
+    private val maxIndex: Int = 6
+
     private val binding get() = _binding!!
-    var index = 1;
+    private var index =  1
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val pensumViewModel =
-            ViewModelProvider(this).get(PensumViewModel::class.java)
-
         _binding = FragmentPensumBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        return root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val pensumViewModel =
+            viewModel
         // set title
         val textView: TextView = binding.q1Txt
         pensumViewModel.studyField.observe(viewLifecycleOwner) {
@@ -36,46 +43,44 @@ class PensumFragment : Fragment() {
         val context = requireContext()
         setInitView(context, pensumViewModel, binding)
 
-        var button = binding.btnAtras
+        val button = binding.btnAtras
         button.setOnClickListener(View.OnClickListener {
-            if (index > 1) {
-                index = index - 1;
+            if (index > minIndex) {
+                index -= minIndex
                 setView(context, pensumViewModel, index, binding)
             }
         })
 
-        var button_next = binding.btnAlante
-        button_next.setOnClickListener(View.OnClickListener {
-            if (index < 6 && index >= 1) {
-                index = index + 1;
+        val buttonNext = binding.btnAlante
+        buttonNext.setOnClickListener(View.OnClickListener {
+            if (index in minIndex..<maxIndex) {
+                index += minIndex
                 setView(context, pensumViewModel, index, binding)
             }
         })
 
-        return root
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    fun setView(
+   private fun setView(
         context: Context,
         pensumViewModel: PensumViewModel,
         index: Int,
         binding: FragmentPensumBinding
     ) {
-        pensumViewModel.setView(context, pensumViewModel, index, binding)
+        pensumViewModel.setView(context, index, binding)
     }
 
-    fun setInitView(
+   private fun setInitView(
         context: Context,
         pensumViewModel: PensumViewModel,
         binding: FragmentPensumBinding
     ) {
         pensumViewModel
-            .setInitView(context, pensumViewModel, binding)
+            .setInitView(context, binding)
 
     }
 

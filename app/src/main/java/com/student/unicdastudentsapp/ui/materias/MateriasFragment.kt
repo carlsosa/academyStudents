@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.student.unicdastudentsapp.databinding.FragmentMateriasBinding
 import com.student.unicdastudentsapp.ui.data.model.Subjets
@@ -16,14 +16,22 @@ import java.io.Serializable
 class MateriasFragment : Fragment() {
     private var _binding: FragmentMateriasBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: MateriasViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val subjetViewModel =
-            ViewModelProvider(this).get(MateriasViewModel::class.java)
         _binding = FragmentMateriasBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val subjetViewModel =
+           viewModel
 
         val recyclerView = _binding!!.recyclerView
         recyclerView.setHasFixedSize(true)
@@ -33,7 +41,7 @@ class MateriasFragment : Fragment() {
         val adapter = MateriaAdapter(subjetViewModel.qt1)
         recyclerView.adapter = adapter
 
-        val root: View = binding.root
+
         adapter.setOnClickListener(object :
             MateriaAdapter.OnClickListener {
             override fun onClick(position: Int, model: Subjets) {
@@ -42,11 +50,11 @@ class MateriasFragment : Fragment() {
                 startActivity(intent)
             }
         })
-        return root
     }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+
     }
 
 }

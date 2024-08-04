@@ -9,6 +9,5 @@ class MateriasViewModel : ViewModel() {
 
     val qt1: List<Subjets> = InitRepository()
         .getUsers()
-        .filter { it.email == UserActive.getUser()?.email ?: "" }
-        .get(0).SubjectsList;
+        .filter { it.email == (UserActive.getUser()?.email ?: "") }[0].subjetsList
 }

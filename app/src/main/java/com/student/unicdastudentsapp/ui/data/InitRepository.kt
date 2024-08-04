@@ -13,88 +13,88 @@ import java.util.Calendar
 import kotlin.random.Random
 
 class InitRepository {
-    var events = mutableListOf<Event>();
-    fun getSubjects(): List<Subjets> {
-        var sl = mutableListOf<Subjets>();
-        var profes = getProfessors()
+    private var events = mutableListOf<Event>()
+    private fun getSubjects(): List<Subjets> {
+        val sl = mutableListOf<Subjets>()
+        val profes = getProfessors()
         // 1st year
-        var x1 = Subjets(108, "Fundamentos de Programación", 1)
+        val x1 = Subjets(108, "Fundamentos de Programación", 1)
         x1.profesor = profes[0]
-        x1.date_hour = "Lun-Mi 6:00-8:00 P.M"
+        x1.dateHour = "Lun-Mi 6:00-8:00 P.M"
         x1.logoId = R.drawable.purplebook
 
-        var x2 = Subjets(109, "Álgebra", 1)
+        val x2 = Subjets(109, "Álgebra", 1)
         x2.profesor = profes[2]
-        x2.date_hour = "Mar-Ju 6:00-8:00 P.M"
+        x2.dateHour = "Mar-Ju 6:00-8:00 P.M"
         x2.logoId = R.drawable.redbook
-        var x3 = Subjets(110, "Algorítmica y Complejidad", 1)
+        val x3 = Subjets(110, "Algorítmica y Complejidad", 1)
         x3.profesor = profes[1]
-        x3.date_hour = "Mar-Ju 8:00-10:00 P.M"
+        x3.dateHour = "Mar-Ju 8:00-10:00 P.M"
         x3.logoId = R.drawable.iconalg
-        var x4 = Subjets(111, "Análisis matemático", 1)
+        val x4 = Subjets(111, "Análisis matemático", 1)
         x4.profesor = profes[3]
-        x4.date_hour = "Lun-Mi 8:00-10:00 P.M"
+        x4.dateHour = "Lun-Mi 8:00-10:00 P.M"
         x4.logoId = R.drawable.math
-        var x5 = Subjets(112, "Arquitectura de computadores", 1)
+        val x5 = Subjets(112, "Arquitectura de computadores", 1)
         x5.profesor = profes[4]
-        x5.date_hour = "Vie 6:00-10:00 P.M"
+        x5.dateHour = "Vie 6:00-10:00 P.M"
         x5.logoId = R.drawable.pc
         sl.add(x1)
         sl.add(x2)
         sl.add(x3)
         sl.add(x4)
         sl.add(x5)
-        return sl;
+        return sl
     }
 
-    fun getProfessors(): List<Professor> {
-        var sl = mutableListOf<Professor>();
+    private fun getProfessors(): List<Professor> {
+        val sl = mutableListOf<Professor>()
         sl.add(Professor(110, "Angelo", "Roy"))
         sl.add(Professor(111, "Paola", "Martinez"))
         sl.add(Professor(112, "Natanael", "Ureña"))
         sl.add(Professor(113, "Regla", "Portela"))
         sl.add(Professor(114, "Willy", "Polanco"))
-        return sl;
+        return sl
     }
 
     fun getUsers(): List<Student> {
-        var x = Student("Carlos", "Sosa", 1)
+        val x = Student("Carlos", "Sosa", 1)
         x.email = "el@uni.edu.do"
-        x.password = "123456";
+        x.password = "123456"
         x.genre = "Masculino"
         x.matricula = "2021-15-27-0011"
         x.phoneNum = "18090000000"
-        x.profile_image = R.drawable.ic_male_student
+        x.profileImage = R.drawable.ic_male_student
         x.studyField = "Ingenieria Software"
         x.pensumID = 1
 
 
-        var x1 = Student("Marta", "Clauss", 2)
+        val x1 = Student("Marta", "Clauss", 2)
         x1.email = "ella@uni.edu.do"
-        x1.password = "123456";
+        x1.password = "123456"
         x1.matricula = "2021-15-27-0010"
         x1.genre = "Femenino"
         x1.phoneNum = "18090000001"
-        x1.profile_image = R.drawable.ic_woman_student
+        x1.profileImage = R.drawable.ic_woman_student
         x1.studyField = "Ingenieria Sistema"
         x1.pensumID = 2
 
-        var list = mutableListOf(x, x1)
-        list.forEach {
+        val list = mutableListOf(x, x1)
+        list.forEach { it ->
             it.isActive = true
             it.age = 22
-            it.date_init = "2021-30-1"
-            it.current_quarter = 4
+            it.dateInit = "2021-30-1"
+            it.currentQuarter = 4
             it.haveDebt = false
             it.academicIndex = 3.5
-            it.date_suspend = "2027-30-1"
-            it.SubjectsList = getSubjects().sortedBy { it.id }
+            it.dateSuspend = "2027-30-1"
+            it.subjetsList = getSubjects().sortedBy { it.id }
         }
-        return list;
+        return list
     }
 
-    fun getPensumSoftware(): List<Subjets> {
-        var sl = mutableListOf<Subjets>();
+    private fun getPensumSoftware(): List<Subjets> {
+        val sl = mutableListOf<Subjets>()
         // 1st year
         sl.add(Subjets(108, "Fundamentos de Programación", 1))
         sl.add(Subjets(109, "Álgebra", 1))
@@ -174,11 +174,11 @@ class InitRepository {
         sl.add(Subjets(412, "Inteligencia Artificial II", 12))
         sl.add(Subjets(413, "Seminario de tecnologia", 12))
         sl.add(Subjets(414, "Laboratorio Ethical Hacking", 12))
-        return sl.sortedBy { it.id };
+        return sl.sortedBy { it.id }
     }
 
-    fun getPensumSistema(): List<Subjets> {
-        var sl = mutableListOf<Subjets>();
+    private fun getPensumSistema(): List<Subjets> {
+        val sl = mutableListOf<Subjets>()
         // 1st year
         sl.add(Subjets(108, "Fundamentos de Programación", 3))
         sl.add(Subjets(109, "Álgebra", 3))
@@ -258,13 +258,13 @@ class InitRepository {
         sl.add(Subjets(412, "Inteligencia Artificial II", 12))
         sl.add(Subjets(413, "Seminario de tecnologia", 12))
         sl.add(Subjets(414, "Laboratorio Ethical Hacking", 12))
-        return sl.sortedBy { it.id };
+        return sl.sortedBy { it.id }
     }
 
     fun getNews(): List<News> {
-        var date_i = "Julio 2024"
-        var list = mutableListOf<News>();
-        var x = News(
+        val dateI = "Julio 2024"
+        val list = mutableListOf<News>()
+        val x = News(
             1,
             "Santo Domingo, martes 23 de julio 2024. El Instituto Cultural Domínico Americano (ICDA), y el Ministerio de Educación Superior, Ciencia y Tecnología (MESCYT), anunciaron la entrega de 1,000 becas para estudiar inglés en modalidad virtual",
             "El ICDA y el MESCYT otorgan becas para estudiar inglés"
@@ -273,37 +273,37 @@ class InitRepository {
         x.img = R.drawable.mescyt
         x.link =
             "https://unicda.edu.do/el-instituto-cultural-dominico-americano-y-el-mescyt-otorgan-1000-becas-para-estudiar-ingles-en-cuatro-provincias-de-republica-dominicana/"
-        var x1 = News(
+        val x1 = News(
             2,
             "la Universidad Domínico Americano (UNICDA) ha celebrado con éxito su evento UniXperience, consolidándose como un punto de encuentro para estudiantes apasionados y comprometidos con su formación académica",
             "Éxito Total en UniXperience: UNICDA"
         )
-        x1.date = date_i
+        x1.date = dateI
         x1.img = R.drawable.experience
         x1.link = "https://unicda.edu.do/exito-total-en-unixperience/"
-        var x3 = News(
+        val x3 = News(
             3,
             "Los participantes de nuestro diplomado vivieron una experiencia educativa en Caucedo DP World Logistics ampliando sus conocimientos académicos con una experiencia práctica de conocer la logística marítima",
             "Práctica de Campo del Diplomado Logística del Comercio Internacional"
         )
-        x3.date = date_i
+        x3.date = dateI
         x3.img = R.drawable.taller
         x3.link = "https://unicda.edu.do/diplomado-logistica-del-comercio-internacional/"
         list.add(x)
         list.add(x1)
         list.add(x3)
-        return list.sortedBy { it.id };
+        return list.sortedBy { it.id }
     }
 
     fun getEventDays(): List<CalendarDay> {
 
         // set calendar
-        var calendarDays = mutableListOf<CalendarDay>();
+        val calendarDays = mutableListOf<CalendarDay>()
 
-        var calendar = Calendar.getInstance();
+        val calendar = Calendar.getInstance()
         calendar.set(2024, 8 - 1, 8)
-        var calendarDay = CalendarDay(calendar);
-        calendarDays.add(calendarDay);
+        val calendarDay = CalendarDay(calendar)
+        calendarDays.add(calendarDay)
         events.add(
             Event(
                 calendarDay.calendar.time.date.toString(),
@@ -312,9 +312,9 @@ class InitRepository {
             )
         )
 
-        var cal1 = Calendar.getInstance();
+        val cal1 = Calendar.getInstance()
         cal1.set(2024, 8 - 1, 3)
-        var calendarDay1 = CalendarDay(cal1);
+        val calendarDay1 = CalendarDay(cal1)
         events.add(
             Event(
                 calendarDay1.calendar.time.date.toString(),
@@ -322,12 +322,12 @@ class InitRepository {
                 calendarDay1.calendar.time.toString()
             )
         )
-        calendarDays.add(calendarDay1);
+        calendarDays.add(calendarDay1)
 
-        var cal2 = Calendar.getInstance();
+        val cal2 = Calendar.getInstance()
         cal2.set(2024, 8 - 1, 15)
-        var calendarDay2 = CalendarDay(cal2);
-        calendarDays.add(calendarDay2);
+        val calendarDay2 = CalendarDay(cal2)
+        calendarDays.add(calendarDay2)
         events.add(
             Event(
                 calendarDay2.calendar.time.date.toString(),
@@ -336,9 +336,9 @@ class InitRepository {
             )
         )
 
-        var cal3 = Calendar.getInstance();
+        val cal3 = Calendar.getInstance()
         cal3.set(2024, 8 - 1, 15)
-        var calendarDay3 = CalendarDay(cal2);
+        val calendarDay3 = CalendarDay(cal2)
         events.add(
             Event(
                 calendarDay3.calendar.time.date.toString(),
@@ -347,60 +347,57 @@ class InitRepository {
             )
         )
 
-        calendarDays.add(calendarDay3);
+        calendarDays.add(calendarDay3)
 
         calendarDays.forEach {
             it.imageResource = R.drawable.calendar
             it.labelColor = R.color.teal_700
         }
-        return calendarDays;
+        return calendarDays
     }
 
     fun findEventsByDate(cal: String): List<Event> {
-        getEventDays();
+        getEventDays()
         return events.filter { it.date == cal }
     }
 
-    fun getUserGrades(idUser: Long): List<StudentCalification> {
-        var grades = mutableListOf<StudentCalification>();
-        var user = getUsers().filter { it.id == idUser }.get(0)
-        var subject = user.SubjectsList.forEach {
-            var p = Random.nextDouble(10.0, 20.0)
-            var s = Random.nextDouble(10.0, 20.0)
-            var m = Random.nextDouble(15.0, 30.0)
-            var f = Random.nextDouble(5.0, 30.0)
-            var totalGrade = p.plus(s).plus(m).plus(f);
-            var x = StudentCalification(
+    private fun getUserGrades(idUser: Long): List<StudentCalification> {
+        val grades = mutableListOf<StudentCalification>()
+        val user = getUsers().filter { it.id == idUser }[0]
+         user.subjetsList.forEach {
+            val p = Random.nextDouble(10.0, 20.0)
+            val s = Random.nextDouble(10.0, 20.0)
+            val m = Random.nextDouble(15.0, 30.0)
+            val f = Random.nextDouble(5.0, 30.0)
+            val totalGrade = p.plus(s).plus(m).plus(f)
+            val x = StudentCalification(
                 idUser, it.id, totalGrade, p,
                 s, m, f
             )
             grades.add(x)
         }
-        return grades;
+        return grades
     }
 
     fun getSubjectGrade(idUser: Long, idSub: Long): StudentCalification {
-        var grade = getUserGrades(idUser).filter { it.subjectId == idSub }.get(0);
-        return grade;
+        val grade = getUserGrades(idUser).filter { it.subjectId == idSub }[0]
+        return grade
     }
 
-    fun getPensumByID(idPensum: Int): List<Subjets> {
-        return getPensumList().filter { it.pensumID == idPensum }.get(0).Subjects;
+    private fun getPensumByID(idPensum: Int): List<Subjets> {
+        return getPensumList().filter { it.pensumID == idPensum }[0].subjets
     }
 
-    fun getPensumList(): List<Pensum> {
-        var software = Pensum(1, 12, getPensumSoftware())
-        var sistema = Pensum(2, 12, getPensumSistema())
-        return mutableListOf(software, sistema);
+    private fun getPensumList(): List<Pensum> {
+        val software = Pensum(1, 12, getPensumSoftware())
+        val sistema = Pensum(2, 12, getPensumSistema())
+        return mutableListOf(software, sistema)
     }
 
     fun getPensumQuarter(student: Student, qtNumber: Int): List<String> {
-        if (student != null) {
-            val ing_soft_qt: List<String> =
-                getPensumByID(student.pensumID).filter { it.quarter == qtNumber }
-                    .map { it.code + " " + it.name }
-            return ing_soft_qt;
-        }
-        return mutableListOf();
+        val ingSoftQt: List<String> =
+            getPensumByID(student.pensumID).filter { it.quarter == qtNumber }
+                .map { it.code + " " + it.name }
+        return ingSoftQt
     }
 }

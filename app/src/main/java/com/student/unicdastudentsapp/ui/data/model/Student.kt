@@ -1,26 +1,24 @@
 package com.student.unicdastudentsapp.ui.data.model
 
-import com.student.unicdastudentsapp.R
-import com.student.unicdastudentsapp.ui.data.InitRepository
 import java.io.Serializable
 
 data class Student(val name: String,val lastName: String, val id: Long) : Serializable{
     var phoneNum: String =""
     var matricula: String =""
-    var age: Int = 0;
-    var studyField: String ="";
-    var date_init: String = "";
-    var isActive: Boolean = false;
-    var date_suspend: String ="";
-    var profile_image: Int = 0;
-    var email: String ="";
-    var password: String ="";
-    var haveDebt: Boolean = false;
-    var current_quarter: Int = 0;
+    var age: Int = 0
+    var studyField: String =""
+    var dateInit: String = ""
+    var isActive: Boolean = false
+    var dateSuspend: String =""
+    var profileImage: Int = 0
+    var email: String =""
+    var password: String =""
+    var haveDebt: Boolean = false
+    var currentQuarter: Int = 0
     // user relationshio with dummy subjects
-    var SubjectsList : List<Subjets> = mutableListOf<Subjets>();
-    var pensumID: Int = 0;
-    var academicIndex: Double =0.0;
+    var subjetsList : List<Subjets> = mutableListOf()
+    var pensumID: Int = 0
+    var academicIndex: Double =0.0
     var genre : String =""
 
 

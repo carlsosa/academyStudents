@@ -1,6 +1,5 @@
 package com.student.unicdastudentsapp.ui.pensum
 
-import android.R
 import android.content.Context
 import android.widget.ArrayAdapter
 import android.widget.ListView
@@ -8,6 +7,7 @@ import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.FragmentPensumBinding
 import com.student.unicdastudentsapp.ui.data.InitRepository
 import com.student.unicdastudentsapp.ui.data.model.UserActive
@@ -15,15 +15,15 @@ import com.student.unicdastudentsapp.ui.data.model.UserActive
 class PensumViewModel : ViewModel() {
 
     private val _title = MutableLiveData<String>().apply {
-        if (UserActive.isUserActive()) {
-            value = UserActive.getUser()?.studyField
+        value = if (UserActive.isUserActive()) {
+            UserActive.getUser()?.studyField
         } else {
-            value = "N/A"
+            "N/A"
         }
     }
     val studyField: LiveData<String> = _title
-    fun ing_soft_qt(qt: Int): List<String> {
-        var user = UserActive.getUser()
+    private fun ingSoftQt(qt: Int): List<String> {
+        val user = UserActive.getUser()
         if (user != null) {
             return InitRepository().getPensumQuarter(user, qt)
         }
@@ -32,99 +32,79 @@ class PensumViewModel : ViewModel() {
 
     fun setInitView(
         context: Context,
-        pensumViewModel: PensumViewModel,
         binding: FragmentPensumBinding
     ) {
-        val textView_q1: TextView = binding.q1Label
-        textView_q1.text = "Primer Cuatrimestre"
-        val mListView1: ListView = binding.q1List;
+        val textviewQ1: TextView = binding.q1Label
+        textviewQ1.text = context.getString(R.string.primer_cuatrimestre)
+        val mListView1: ListView = binding.q1List
         mListView1.adapter =
-            ArrayAdapter(context, android.R.layout.simple_list_item_1, ing_soft_qt(1))
+            ArrayAdapter(context, android.R.layout.simple_list_item_1, ingSoftQt(1))
 
-        val textView_q2: TextView = binding.q2Label
-        textView_q2.text = "Segundo Cuatrimestre"
-        val mListView2: ListView = binding.q2List;
+        val textviewQ2: TextView = binding.q2Label
+        textviewQ2.text = context.getString(R.string.segundo_cuatrimestre)
+        val mListView2: ListView = binding.q2List
 
         mListView2.adapter =
-            ArrayAdapter(context, android.R.layout.simple_list_item_1, ing_soft_qt(2))
+            ArrayAdapter(context, android.R.layout.simple_list_item_1, ingSoftQt(2))
 
 
     }
 
     fun setView(
         context: Context,
-        pensumViewModel: PensumViewModel,
         index: Int,
         binding: FragmentPensumBinding
     ) {
-        if (index == 1) {
-            val textView_q1: TextView = binding.q1Label
-            textView_q1.text = "Primer Cuatrimestre"
-            val mListView1: ListView = binding.q1List;
-            mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ing_soft_qt(1))
+        val textviewQ1: TextView = binding.q1Label
+        val textviewQ2: TextView = binding.q2Label
 
-            val textView_q2: TextView = binding.q2Label
-            textView_q2.text = "Segundo Cuatrimestre"
-            val mListView2: ListView = binding.q2List;
+        val mListView1: ListView = binding.q1List
+        val mListView2: ListView = binding.q2List
+        when (index) {
+            1 -> {
+                textviewQ1.text = context.getString(R.string.primer_cuatrimestre)
+                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(1))
 
-            mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ing_soft_qt(2))
+                textviewQ2.text = context.getString(R.string.segundo_cuatrimestre)
+                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(2))
 
-        } else if (index == 2) {
-            val textView_q1: TextView = binding.q1Label
-            textView_q1.text = "Tercer Cuatrimestre"
-            val mListView1: ListView = binding.q1List;
-            mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ing_soft_qt(3))
+            }
+            2 -> {
+                textviewQ1.text = context.getString(R.string.tercer_cuatrimestre)
+                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(3))
 
-            val textView_q2: TextView = binding.q2Label
-            textView_q2.text = "Cuarto Cuatrimestre"
-            val mListView2: ListView = binding.q2List;
+                textviewQ2.text = context.getString(R.string.cuarto_cuatrimestre)
+                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(4))
 
-            mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ing_soft_qt(4))
+            }
+            3 -> {
+                textviewQ1.text = context.getString(R.string.quinto_cuatrimestre)
+                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(5))
 
-        } else if (index == 3) {
-            val textView_q1: TextView = binding.q1Label
-            textView_q1.text = "Quinto Cuatrimestre"
-            val mListView1: ListView = binding.q1List;
-            mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ing_soft_qt(5))
+                textviewQ2.text = context.getString(R.string.sexto_cuatrimestre)
+                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(6))
+            }
+            4 -> {
+                textviewQ1.text = context.getString(R.string.septimo_cuatrimestre)
+                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(7))
 
-            val textView_q2: TextView = binding.q2Label
-            textView_q2.text = "Sexto Cuatrimestre"
-            val mListView2: ListView = binding.q2List;
+                textviewQ2.text = context.getString(R.string.octavo_cuatrimestre)
+                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(8))
+            }
+            5 -> {
+                textviewQ1.text = context.getString(R.string.noveno_cuatrimestre)
+                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(9))
 
-            mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ing_soft_qt(6))
-        } else if (index == 4) {
-            val textView_q1: TextView = binding.q1Label
-            textView_q1.text = "Septimo Cuatrimestre"
-            val mListView1: ListView = binding.q1List;
-            mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ing_soft_qt(7))
+                textviewQ2.text = context.getString(R.string.decimo_cuatrimestre)
+                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(10))
+            }
+            6 -> {
+                textviewQ1.text = context.getString(R.string.undecimo_cuatrimestre)
+                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(11))
 
-            val textView_q2: TextView = binding.q2Label
-            textView_q2.text = "Octavo Cuatrimestre"
-            val mListView2: ListView = binding.q2List;
-
-            mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ing_soft_qt(8))
-        } else if (index == 5) {
-            val textView_q1: TextView = binding.q1Label
-            textView_q1.text = "Noveno Cuatrimestre"
-            val mListView1: ListView = binding.q1List;
-            mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ing_soft_qt(9))
-
-            val textView_q2: TextView = binding.q2Label
-            textView_q2.text = "Decimo Cuatrimestre"
-            val mListView2: ListView = binding.q2List;
-
-            mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ing_soft_qt(10))
-        } else if (index == 6) {
-            val textView_q1: TextView = binding.q1Label
-            textView_q1.text = "Undecimo Cuatrimestre"
-            val mListView1: ListView = binding.q1List;
-            mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ing_soft_qt(11))
-
-            val textView_q2: TextView = binding.q2Label
-            textView_q2.text = "Duodecimo Cuatrimestre"
-            val mListView2: ListView = binding.q2List;
-
-            mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ing_soft_qt(12))
+                textviewQ2.text = context.getString(R.string.duodecimo_cuatrimestre)
+                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(12))
+            }
         }
     }
 

@@ -35,11 +35,12 @@ class NotificacionesAdapter(private val newsList: List<News>) :
     }
 
     override fun onBindViewHolder(notificacionesViewHolder: NotificacionesViewHolder, idx: Int) {
-        var news = newsList[idx]
+        val news = newsList[idx]
         notificacionesViewHolder.title.text = news.title
         notificacionesViewHolder.date.text = news.date
-        notificacionesViewHolder.content.text = news.message.substring(0, 200) + ".."
-        notificacionesViewHolder.link.text = "Haga click para Leer más"
+        notificacionesViewHolder.content.text = StringBuilder()
+            .append(news.message.substring(0, 200)).append("..").toString()
+        notificacionesViewHolder.link.text = StringBuilder().append("Haga click para Leer más").toString()
         notificacionesViewHolder.image.setImageResource(news.img)
         notificacionesViewHolder.itemView.setOnClickListener {
             onClickListener?.onClick(idx, news)

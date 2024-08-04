@@ -98,4 +98,31 @@
     <string name="cerrar">Cerrar Sesion</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="help_text">¿Necesitas Ayuda? \n Contactanos..</string>
+    <string name="email_help">carlos.sosa@unicda.edu.do</string>
+    <string name="about_text">Acerca de nosotros..</string>
+    <string name="dev">Desarrollador</string>
+    <string name="dev_team">Carlos Sosa</string>
+    <string name="v_label">Version</string>
+    <string name="v_value">1.0</string>
+    <string name="date_rel">Fecha release</string>
+    <string name="date_rel_value">31-07-2024</string>
+    <string name="tel_label">Telefono</string>
+    <string name="tel_value">1 (809) 535-0665</string>
+    <string name="legal">Licencia</string>
+    <string name="legal_value">MIT</string>
+    <string name="web_lbl">Web</string>
+    <string name="uni_label">https://unicda.edu.do/</string>
+    <string name="primer_cuatrimestre">Primer Cuatrimestre</string>
+    <string name="segundo_cuatrimestre">Segundo Cuatrimestre</string>
+    <string name="tercer_cuatrimestre">Tercer Cuatrimestre</string>
+    <string name="cuarto_cuatrimestre">Cuarto Cuatrimestre</string>
+    <string name="quinto_cuatrimestre">Quinto Cuatrimestre</string>
+    <string name="sexto_cuatrimestre">Sexto Cuatrimestre</string>
+    <string name="septimo_cuatrimestre">Septimo Cuatrimestre</string>
+    <string name="octavo_cuatrimestre">Octavo Cuatrimestre</string>
+    <string name="noveno_cuatrimestre">Noveno Cuatrimestre</string>
+    <string name="decimo_cuatrimestre">Decimo Cuatrimestre</string>
+    <string name="undecimo_cuatrimestre">Undecimo Cuatrimestre</string>
+    <string name="duodecimo_cuatrimestre">Duodecimo Cuatrimestre</string>
 </resources>

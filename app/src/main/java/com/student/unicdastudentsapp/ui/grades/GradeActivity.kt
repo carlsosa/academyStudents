@@ -14,11 +14,11 @@ class GradeActivity : AppCompatActivity() {
         binding = ActivityGradeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val subject = intent.extras?.get("EXTRA_GRADE") as Subjets
-        var grade =
+        val grade =
             UserActive.getUser()?.id?.let { InitRepository().getSubjectGrade(it, subject.id) }
         val title = binding.gradeTitle
         val desc = binding.gradeDesc
-        if (subject != null && grade != null) {
+        if (grade != null) {
             title.text = subject.name
             desc.text = grade.fulltext
         }

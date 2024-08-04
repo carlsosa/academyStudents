@@ -22,22 +22,26 @@ class EventActivity : AppCompatActivity() {
         val desc = binding.eventDesc
          binding.eventImage.setImageResource(R.drawable.dominico2)
         val events = intent.extras?.get("EXTRA_EVENT") as List<Event>
-        title.text = "CALENDARIO ADMINISTRATIVO " +
-                Calendar.getInstance().get(Calendar.YEAR)
+        title.text = StringBuilder().append("CALENDARIO ADMINISTRATIVO ")
+            .append(Calendar.getInstance().get(Calendar.YEAR)).toString()
         var eventInfo: String? = ""
         if (events.isNotEmpty()) {
-            date.text = events.get(0).self
+            date.text = events[0].selfCalendar
             events.forEach {
                 eventInfo = eventInfo + "\n" + it.event
 
             }
-            desc.text = "Descripción del evento:" + "\n" + eventInfo
+            desc.text = StringBuilder().append("Descripción del evento:")
+                .append("\n")
+                .append(eventInfo).toString()
 
         } else {
-            title.text = "No hay eventos";
+            title.text = StringBuilder().append("No hay eventos").toString()
         }
 
     }
+
+
 
 
 }

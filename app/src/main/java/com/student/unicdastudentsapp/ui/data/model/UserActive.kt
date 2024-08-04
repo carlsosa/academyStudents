@@ -4,18 +4,14 @@ object UserActive {
     private var user: Student? = null
 
     fun getUser(): Student? {
-        return user;
+        return user
     }
 
     fun setUser(student: Student?) {
-        user = student;
+        user = student
     }
 
     fun isUserActive(): Boolean {
-        if (user != null) {
-            return true;
-        } else {
-            return false
-        }
+        return user != null
     }
 }
