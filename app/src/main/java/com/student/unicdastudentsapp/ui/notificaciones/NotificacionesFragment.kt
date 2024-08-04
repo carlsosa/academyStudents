@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.student.unicdastudentsapp.databinding.FragmentNotificacionesBinding
 import com.student.unicdastudentsapp.ui.data.model.News
+import com.student.unicdastudentsapp.ui.data.model.UserActive
 
 
 class NotificacionesFragment : Fragment() {
@@ -35,6 +36,9 @@ class NotificacionesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(!UserActive.isUserActive()){
+            onDestroyView()
+        }
         val viewModel1 =
             viewModel
         val recyclerView = _binding!!.recyclerViewNews
@@ -52,4 +56,10 @@ class NotificacionesFragment : Fragment() {
 
         })
     }
+    override fun onDestroyView() {
+
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

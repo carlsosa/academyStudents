@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.student.unicdastudentsapp.databinding.FragmentPerfilBinding
+import com.student.unicdastudentsapp.ui.data.model.UserActive
 
 class PerfilFragment : Fragment() {
 
@@ -28,6 +29,9 @@ class PerfilFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(!UserActive.isUserActive()) {
+            onDestroyView()
+        }
         val perfilViewModel = viewModel
         init(_binding!!, perfilViewModel)
 

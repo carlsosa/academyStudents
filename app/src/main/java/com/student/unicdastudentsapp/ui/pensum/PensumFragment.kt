@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.student.unicdastudentsapp.databinding.FragmentPensumBinding
+import com.student.unicdastudentsapp.ui.data.model.UserActive
 
 
 class PensumFragment : Fragment() {
@@ -32,6 +33,9 @@ class PensumFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(!UserActive.isUserActive()){
+            onDestroyView()
+        }
         val pensumViewModel =
             viewModel
         // set title

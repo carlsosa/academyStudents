@@ -11,6 +11,7 @@ import com.applandeo.materialcalendarview.CalendarDay
 import com.applandeo.materialcalendarview.CalendarWeekDay
 import com.applandeo.materialcalendarview.listeners.OnCalendarDayClickListener
 import com.student.unicdastudentsapp.databinding.FragmentCalendarioBinding
+import com.student.unicdastudentsapp.ui.data.model.UserActive
 import com.student.unicdastudentsapp.ui.evento.EventActivity
 import java.io.Serializable
 import java.util.Calendar
@@ -35,23 +36,13 @@ class CalendarioFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(!UserActive.isUserActive()){
+            onDestroyView()
+        }
         val calendarView = binding.calendarView
         val calendarioViewModel =
             ViewModelProvider(this)[CalendarioViewModel::class.java]
         calendarView.setOnCalendarDayClickListener(object : OnCalendarDayClickListener {
-            /*
-            fun onDayClick(calendarDay: CalendarDay) {
-                val clickedDayCalendar = calendarDay.calendar
-                val date = clickedDayCalendar.time.date.toString()
-                val events = calendarioViewModel.findEventsByDate(date)
-                val intent = Intent(context, EventActivity::class.java)
-                if (events.isNotEmpty()) {
-                    intent.putExtra("EXTRA_EVENT", events as Serializable)
-                    startActivity(intent)
-                }
-            }
-             */
-
             override fun onClick(calendarDay: CalendarDay) {
                 val date = calendarDay.calendar.time.date.toString()
                 val events = calendarioViewModel.findEventsByDate(date)

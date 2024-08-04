@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.student.unicdastudentsapp.databinding.FragmentAcercaBinding
+import com.student.unicdastudentsapp.ui.data.model.UserActive
 
 class AcercaFragment : Fragment() {
 
@@ -28,6 +29,19 @@ class AcercaFragment : Fragment() {
          val root: View = binding.root
         return root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if(!UserActive.isUserActive()){
+            onDestroyView()
+        }
+    }
+    override fun onDestroyView() {
+
+        super.onDestroyView()
+        _binding = null
+    }
+
 
 
 }

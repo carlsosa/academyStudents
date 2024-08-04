@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.student.unicdastudentsapp.databinding.FragmentMateriasBinding
 import com.student.unicdastudentsapp.ui.data.model.Subjets
+import com.student.unicdastudentsapp.ui.data.model.UserActive
 import com.student.unicdastudentsapp.ui.grades.GradeActivity
 import java.io.Serializable
 
@@ -30,6 +31,9 @@ class MateriasFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(!UserActive.isUserActive()){
+            onDestroyView()
+        }
         val subjetViewModel =
            viewModel
 
