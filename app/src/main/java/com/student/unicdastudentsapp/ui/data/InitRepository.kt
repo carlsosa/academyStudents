@@ -9,11 +9,16 @@ import com.student.unicdastudentsapp.ui.data.model.Professor
 import com.student.unicdastudentsapp.ui.data.model.Student
 import com.student.unicdastudentsapp.ui.data.model.StudentCalification
 import com.student.unicdastudentsapp.ui.data.model.Subjets
+import com.student.unicdastudentsapp.ui.data.model.UserActive
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 import java.util.Calendar
+import java.util.Locale
 import kotlin.random.Random
 
 class InitRepository {
     private var events = mutableListOf<Event>()
+    val noEvents = StringBuilder().append("No hay eventos").toString()
     private fun getSubjects(): List<Subjets> {
         val sl = mutableListOf<Subjets>()
         val profes = getProfessors()
@@ -399,5 +404,40 @@ class InitRepository {
             getPensumByID(student.pensumID).filter { it.quarter == qtNumber }
                 .map { it.code + " " + it.name }
         return ingSoftQt
+    }
+     fun getSubjectsPendingByUser(): List<Subjets> {
+        var user = UserActive.getUser()
+        if(user != null) {
+            var sl = getPensumByID(user.pensumID).take(50)
+            sl.forEach{
+                it.credits = Random.nextInt(3,5)
+            }
+            return sl;
+        }
+
+        return mutableListOf()
+    }
+
+    fun descEvent(events: List<Event>) : String{
+        var eventInfo = ""
+        events.forEach {
+            eventInfo = eventInfo + "\n" + it.event
+
+        }
+        var st = StringBuilder().append("Descripción del evento:")
+            .append("\n")
+            .append(eventInfo).toString()
+        return st;
+    }
+    fun getCalendarYear() : String{
+        return StringBuilder().append("CALENDARIO ADMINISTRATIVO ")
+            .append(Calendar.getInstance().get(Calendar.YEAR)).toString()
+    }
+    fun getUserGrade(subjectID: Long) : StudentCalification? {
+        var user = UserActive.getUser()
+        if(user != null) {
+            return getSubjectGrade(user.id, subjectID)
+        }
+        return null;
     }
 }

@@ -125,4 +125,7 @@
     <string name="decimo_cuatrimestre">Decimo Cuatrimestre</string>
     <string name="undecimo_cuatrimestre">Undecimo Cuatrimestre</string>
     <string name="duodecimo_cuatrimestre">Duodecimo Cuatrimestre</string>
+    <string name="sp_text">Materias Pendientes</string>
+    <string name="asig_ins_text">Asignaturas Inscritas</string>
+    <string name="mp_text">Materias Pendientes</string>
 </resources>

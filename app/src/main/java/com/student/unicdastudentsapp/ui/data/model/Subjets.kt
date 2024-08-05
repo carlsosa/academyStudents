@@ -12,6 +12,8 @@ data class Subjets(val id: Long, val name: String, val quarter: Int) : Serializa
     var status: Boolean = true
     var credits = Random.nextInt(4, 5)
     var logoId = 0
+    var detail: String = StringBuilder().append("Creditos: ")
+        .append(credits).toString()
 
 
 }

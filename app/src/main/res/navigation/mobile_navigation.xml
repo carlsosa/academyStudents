@@ -41,4 +41,8 @@
         android:id="@+id/nav_close"
         android:name="com.student.unicdastudentsapp.ui.logout.LogOut"
         android:label="Cerrar Session" />
+    <activity
+        android:id="@+id/nav_pending"
+        android:name="com.student.unicdastudentsapp.ui.pendientes.PendingSubjectsActivity"
+        android:label="Materias Pendientes" />
 </navigation>
