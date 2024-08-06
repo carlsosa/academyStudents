@@ -3,7 +3,8 @@
 # Academy Students
 
 **Academy Students** Es una aplicación movil que permite al estudiante consultar sus materias asignadas, pensum, calificaciones, materias pendientes, notificaciones institucionales, calendario academico, horario, ubicacion de aulas, etc. 
-[Contribution guidelines for this project](/scshot_login.png)
+
+![Alt text](/scshot_login.pn?raw=true "Login")
 
 
 ## Funcionalidades
