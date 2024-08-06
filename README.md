@@ -3,6 +3,8 @@
 # Academy Students
 
 **Academy Students** Es una aplicación movil que permite al estudiante consultar sus materias asignadas, pensum, calificaciones, materias pendientes, notificaciones institucionales, calendario academico, horario, ubicacion de aulas, etc. 
+![alt text](http://url/to/img.png)
+![alt text](http://url/to/img.png)
 
 
 ## Funcionalidades
@@ -15,7 +17,7 @@
 
 ## Instalacion
 
-### Prerequisitos
+### Pre-requisitos
 
 - Kotlin 1.9.0
 - API 34 (Android 14 "UpsideDownCake"
