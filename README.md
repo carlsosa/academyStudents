@@ -6,7 +6,7 @@
 
 ![screenshot](scshot_login.png)
 
-![screenshot](scshot_login.png)
+![screenshot](scshot_nav.png)
 
 
 ## Funcionalidades
