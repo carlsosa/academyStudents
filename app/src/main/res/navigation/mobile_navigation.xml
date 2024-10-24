@@ -7,42 +7,42 @@
 
     <fragment
         android:id="@+id/nav_perfil"
-        android:name="com.student.unicdastudentsapp.ui.perfil.PerfilFragment"
+        android:name="com.student.unicdastudentsapp.presentation.perfil.PerfilFragment"
         android:label="@string/menu_perfil"
         tools:layout="@layout/fragment_perfil" />
 
     <fragment
         android:id="@+id/nav_pensum"
-        android:name="com.student.unicdastudentsapp.ui.pensum.PensumFragment"
+        android:name="com.student.unicdastudentsapp.presentation.pensum.PensumFragment"
         android:label="@string/menu_pensum"
         tools:layout="@layout/fragment_pensum" />
 
     <fragment
         android:id="@+id/nav_calendar"
-        android:name="com.student.unicdastudentsapp.ui.calendario.CalendarioFragment"
+        android:name="com.student.unicdastudentsapp.presentation.calendario.CalendarioFragment"
         android:label="@string/menu_calendario"
         tools:layout="@layout/fragment_calendario" />
     <fragment
         android:id="@+id/nav_subjects"
-        android:name="com.student.unicdastudentsapp.ui.materias.MateriasFragment"
+        android:name="com.student.unicdastudentsapp.presentation.materias.MateriasFragment"
         android:label="@string/menu_subjects"
         tools:layout="@layout/fragment_materias" />
     <fragment
         android:id="@+id/nav_news"
-        android:name="com.student.unicdastudentsapp.ui.notificaciones.NotificacionesFragment"
+        android:name="com.student.unicdastudentsapp.presentation.notificaciones.NotificacionesFragment"
         android:label="@string/menu_news"
         tools:layout="@layout/fragment_notificaciones" />
     <fragment
         android:id="@+id/nav_version"
-        android:name="com.student.unicdastudentsapp.ui.acercade.AcercaFragment"
+        android:name="com.student.unicdastudentsapp.presentation.acercade.AcercaFragment"
         android:label="@string/menu_version"
         tools:layout="@layout/fragment_acerca" />
     <activity
         android:id="@+id/nav_close"
-        android:name="com.student.unicdastudentsapp.ui.logout.LogOut"
+        android:name="com.student.unicdastudentsapp.presentation.logout.LogOut"
         android:label="Cerrar Session" />
     <activity
         android:id="@+id/nav_pending"
-        android:name="com.student.unicdastudentsapp.ui.pendientes.PendingSubjectsActivity"
+        android:name="com.student.unicdastudentsapp.presentation.pendientes.PendingSubjectsActivity"
         android:label="Materias Pendientes" />
 </navigation>

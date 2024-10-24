@@ -5,7 +5,7 @@
     android:id="@+id/pendingMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.pendientes.PendingSubjectsActivity">
+    tools:context=".presentation.pendientes.PendingSubjectsActivity">
     <TextView
         android:id="@+id/heading2"
         android:layout_width="match_parent"
