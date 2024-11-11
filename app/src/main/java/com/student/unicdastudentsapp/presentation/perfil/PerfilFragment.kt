@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.student.unicdastudentsapp.databinding.FragmentPerfilBinding
-import com.student.unicdastudentsapp.presentation.data.model.UserActive
+import com.student.unicdastudentsapp.domain.model.UserActive
 
 class PerfilFragment : Fragment() {
 

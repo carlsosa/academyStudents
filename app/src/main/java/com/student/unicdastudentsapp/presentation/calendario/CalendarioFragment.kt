@@ -11,7 +11,7 @@ import com.applandeo.materialcalendarview.CalendarDay
 import com.applandeo.materialcalendarview.CalendarWeekDay
 import com.applandeo.materialcalendarview.listeners.OnCalendarDayClickListener
 import com.student.unicdastudentsapp.databinding.FragmentCalendarioBinding
-import com.student.unicdastudentsapp.presentation.data.model.UserActive
+import com.student.unicdastudentsapp.domain.model.UserActive
 import com.student.unicdastudentsapp.presentation.evento.EventActivity
 import java.io.Serializable
 import java.util.Calendar

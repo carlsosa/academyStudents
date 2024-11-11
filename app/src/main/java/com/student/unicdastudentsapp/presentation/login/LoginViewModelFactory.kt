@@ -2,8 +2,8 @@ package com.student.unicdastudentsapp.presentation.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.student.unicdastudentsapp.presentation.data.LoginDataSource
-import com.student.unicdastudentsapp.presentation.data.LoginRepository
+import com.student.unicdastudentsapp.domain.repository.LoginDataSource
+import com.student.unicdastudentsapp.domain.repository.LoginRepository
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

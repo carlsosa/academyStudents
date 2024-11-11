@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.ActivityEventBinding
-import com.student.unicdastudentsapp.presentation.data.InitRepository
-import com.student.unicdastudentsapp.presentation.data.model.Event
+import com.student.unicdastudentsapp.domain.repository.InitRepository
+import com.student.unicdastudentsapp.domain.model.Event
 
 
 class EventActivity : AppCompatActivity() {

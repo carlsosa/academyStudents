@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.student.unicdastudentsapp.databinding.FragmentMateriasBinding
-import com.student.unicdastudentsapp.presentation.data.model.Subjets
-import com.student.unicdastudentsapp.presentation.data.model.UserActive
+import com.student.unicdastudentsapp.domain.model.Subjets
+import com.student.unicdastudentsapp.domain.model.UserActive
 import com.student.unicdastudentsapp.presentation.grades.GradeActivity
 import java.io.Serializable
 

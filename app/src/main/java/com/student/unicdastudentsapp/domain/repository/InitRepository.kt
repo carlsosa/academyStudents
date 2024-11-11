@@ -1,15 +1,15 @@
-package com.student.unicdastudentsapp.presentation.data
+package com.student.unicdastudentsapp.domain.repository
 
 import com.applandeo.materialcalendarview.CalendarDay
 import com.student.unicdastudentsapp.R
-import com.student.unicdastudentsapp.presentation.data.model.Event
-import com.student.unicdastudentsapp.presentation.data.model.News
-import com.student.unicdastudentsapp.presentation.data.model.Pensum
-import com.student.unicdastudentsapp.presentation.data.model.Professor
-import com.student.unicdastudentsapp.presentation.data.model.Student
-import com.student.unicdastudentsapp.presentation.data.model.StudentCalification
-import com.student.unicdastudentsapp.presentation.data.model.Subjets
-import com.student.unicdastudentsapp.presentation.data.model.UserActive
+import com.student.unicdastudentsapp.domain.model.Event
+import com.student.unicdastudentsapp.domain.model.News
+import com.student.unicdastudentsapp.domain.model.Pensum
+import com.student.unicdastudentsapp.domain.model.Professor
+import com.student.unicdastudentsapp.domain.model.Student
+import com.student.unicdastudentsapp.domain.model.StudentCalification
+import com.student.unicdastudentsapp.domain.model.Subjets
+import com.student.unicdastudentsapp.domain.model.UserActive
 import java.util.Calendar
 import kotlin.random.Random
 

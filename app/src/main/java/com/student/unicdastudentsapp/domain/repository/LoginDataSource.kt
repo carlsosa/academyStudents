@@ -1,8 +1,9 @@
-package com.student.unicdastudentsapp.presentation.data
+package com.student.unicdastudentsapp.domain.repository
 
 
-import com.student.unicdastudentsapp.presentation.data.model.LoggedInUser
-import com.student.unicdastudentsapp.presentation.data.model.UserActive
+import com.student.unicdastudentsapp.domain.model.LoggedInUser
+import com.student.unicdastudentsapp.domain.model.UserActive
+import com.student.unicdastudentsapp.domain.model.Result
 import java.io.IOException
 
 /**

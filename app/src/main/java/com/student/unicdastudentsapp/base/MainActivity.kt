@@ -15,7 +15,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.ActivityMainBinding
-import com.student.unicdastudentsapp.presentation.data.model.UserActive
+import com.student.unicdastudentsapp.domain.model.UserActive
 import com.student.unicdastudentsapp.presentation.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {

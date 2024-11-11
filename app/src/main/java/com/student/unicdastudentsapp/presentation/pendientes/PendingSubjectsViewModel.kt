@@ -1,7 +1,7 @@
 package com.student.unicdastudentsapp.presentation.pendientes
 
-import com.student.unicdastudentsapp.presentation.data.InitRepository
-import com.student.unicdastudentsapp.presentation.data.model.Subjets
+import com.student.unicdastudentsapp.domain.repository.InitRepository
+import com.student.unicdastudentsapp.domain.model.Subjets
 
 class PendingSubjectsViewModel {
 

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.student.unicdastudentsapp.databinding.ActivityPendingSubjectsBinding
-import com.student.unicdastudentsapp.presentation.data.model.UserActive
+import com.student.unicdastudentsapp.domain.model.UserActive
 
 class PendingSubjectsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPendingSubjectsBinding

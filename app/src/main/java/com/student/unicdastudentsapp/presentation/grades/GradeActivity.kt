@@ -3,8 +3,8 @@ package com.student.unicdastudentsapp.presentation.grades
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.student.unicdastudentsapp.databinding.ActivityGradeBinding
-import com.student.unicdastudentsapp.presentation.data.InitRepository
-import com.student.unicdastudentsapp.presentation.data.model.Subjets
+import com.student.unicdastudentsapp.domain.repository.InitRepository
+import com.student.unicdastudentsapp.domain.model.Subjets
 
 class GradeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGradeBinding

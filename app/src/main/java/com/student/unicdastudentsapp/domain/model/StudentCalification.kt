@@ -1,4 +1,4 @@
-package com.student.unicdastudentsapp.presentation.data.model
+package com.student.unicdastudentsapp.domain.model
 
 import kotlin.math.round
 

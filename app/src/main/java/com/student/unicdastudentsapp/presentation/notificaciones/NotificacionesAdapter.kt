@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.student.unicdastudentsapp.R
-import com.student.unicdastudentsapp.presentation.data.model.News
+import com.student.unicdastudentsapp.domain.model.News
 
 class NotificacionesAdapter(private val newsList: List<News>) :
 

@@ -1,9 +1,9 @@
 package com.student.unicdastudentsapp.presentation.materias
 
 import androidx.lifecycle.ViewModel
-import com.student.unicdastudentsapp.presentation.data.InitRepository
-import com.student.unicdastudentsapp.presentation.data.model.Subjets
-import com.student.unicdastudentsapp.presentation.data.model.UserActive
+import com.student.unicdastudentsapp.domain.repository.InitRepository
+import com.student.unicdastudentsapp.domain.model.Subjets
+import com.student.unicdastudentsapp.domain.model.UserActive
 
 class MateriasViewModel : ViewModel() {
 

@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.applandeo.materialcalendarview.CalendarDay
-import com.student.unicdastudentsapp.presentation.data.InitRepository
-import com.student.unicdastudentsapp.presentation.data.model.Event
+import com.student.unicdastudentsapp.domain.repository.InitRepository
+import com.student.unicdastudentsapp.domain.model.Event
 
 class CalendarioViewModel : ViewModel() {
 

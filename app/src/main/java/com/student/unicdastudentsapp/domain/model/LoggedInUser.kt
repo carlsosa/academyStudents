@@ -1,4 +1,4 @@
-package com.student.unicdastudentsapp.presentation.data.model
+package com.student.unicdastudentsapp.domain.model
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository

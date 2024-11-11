@@ -1,4 +1,4 @@
-package com.student.unicdastudentsapp.presentation.data.model
+package com.student.unicdastudentsapp.domain.model
 
 object UserActive {
     private var user: Student? = null

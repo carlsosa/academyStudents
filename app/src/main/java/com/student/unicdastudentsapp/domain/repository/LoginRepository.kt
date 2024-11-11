@@ -1,6 +1,7 @@
-package com.student.unicdastudentsapp.presentation.data
+package com.student.unicdastudentsapp.domain.repository
 
-import com.student.unicdastudentsapp.presentation.data.model.LoggedInUser
+import com.student.unicdastudentsapp.domain.model.LoggedInUser
+import com.student.unicdastudentsapp.domain.model.Result
 
 /**
  * Class that requests authentication and user information from the remote data source and

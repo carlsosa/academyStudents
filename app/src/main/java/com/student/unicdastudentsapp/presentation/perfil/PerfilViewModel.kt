@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.student.unicdastudentsapp.databinding.FragmentPerfilBinding
-import com.student.unicdastudentsapp.presentation.data.model.UserActive
+import com.student.unicdastudentsapp.domain.model.UserActive
 
 class PerfilViewModel : ViewModel() {
 
