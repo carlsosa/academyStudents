@@ -2,7 +2,7 @@ package com.student.unicdastudentsapp.domain.model
 
 import java.io.Serializable
 
-data class Student(val name: String,val lastName: String, val id: Long) : Serializable{
+data class Student(var name: String, var lastName: String, var id: Long) : Serializable{
     var phoneNum: String =""
     var matricula: String =""
     var age: Int = 0

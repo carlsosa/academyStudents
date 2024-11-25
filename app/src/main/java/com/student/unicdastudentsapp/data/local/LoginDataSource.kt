@@ -1,9 +1,10 @@
-package com.student.unicdastudentsapp.domain.repository
+package com.student.unicdastudentsapp.data.local
 
 
 import com.student.unicdastudentsapp.domain.model.LoggedInUser
 import com.student.unicdastudentsapp.domain.model.UserActive
 import com.student.unicdastudentsapp.domain.model.Result
+import com.student.unicdastudentsapp.domain.repository.InitRepository
 import java.io.IOException
 
 /**

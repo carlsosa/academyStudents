@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1083661727812",
+    "project_id": "academystudent-d145a",
+    "storage_bucket": "academystudent-d145a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083661727812:android:e0d94f044e90d200a22411",
+        "android_client_info": {
+          "package_name": "com.student.unicdastudentsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7_-ZEe7RNwGEXQktFyQbKHbml5KGeQas"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

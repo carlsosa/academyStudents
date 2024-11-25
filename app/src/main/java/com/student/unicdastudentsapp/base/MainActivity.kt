@@ -13,6 +13,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.FirebaseApp
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.ActivityMainBinding
 import com.student.unicdastudentsapp.domain.model.UserActive
@@ -26,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-
         if (!UserActive.isUserActive()) {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)

@@ -3,7 +3,7 @@ package com.student.unicdastudentsapp.domain.model
 import java.io.Serializable
 import kotlin.random.Random
 
-data class Subjets(val id: Long, val name: String, val quarter: Int) : Serializable {
+data class Subjets(var id: Long, var name: String, var quarter: Int) : Serializable {
     var code = "INGS-$id"
     var dateHour: String = ""
     var classroom: String = "E-" + Random.nextInt(205, 405)
