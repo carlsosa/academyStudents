@@ -3,7 +3,6 @@ package com.student.unicdastudentsapp.domain.repository
 import com.google.firebase.firestore.FirebaseFirestore
 import com.student.unicdastudentsapp.domain.model.Inscription
 import com.student.unicdastudentsapp.domain.model.InscriptionSubjects
-import com.student.unicdastudentsapp.domain.model.Subjets
 
 class InscriptionsRepository {
 

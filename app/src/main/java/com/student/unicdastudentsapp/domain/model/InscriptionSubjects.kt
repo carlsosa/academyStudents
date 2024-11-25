@@ -4,6 +4,7 @@ class InscriptionSubjects {
     var id =""
     var Subject =""
    var  inscriptionID =""
+    var teacherID =""
     var Day1 =""
     var Day2=""
     var Exam1= 0
