@@ -23,7 +23,7 @@ class PerfilViewModel : ViewModel() {
             binding.studentField.text = user.studyField
             binding.studentIndex.text = user.academicIndex.toString()
             binding.studentGenre.text = user.genre
-            binding.perfilimg.setImageResource(user.profileImage)
+            binding.perfilimg.setImageResource(0)
             binding.studentMobile.text = user.phoneNum
 
         }

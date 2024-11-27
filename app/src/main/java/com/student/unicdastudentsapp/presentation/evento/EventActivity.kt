@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.ActivityEventBinding
-import com.student.unicdastudentsapp.domain.repository.InitRepository
 import com.student.unicdastudentsapp.domain.model.Event
+import com.student.unicdastudentsapp.domain.repository.EventsRepository
 
 
 class EventActivity : AppCompatActivity() {
@@ -15,7 +15,7 @@ class EventActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       val viewModel =  InitRepository()
+       val viewModel =  EventsRepository();
         binding = ActivityEventBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val title = binding.eventTitle

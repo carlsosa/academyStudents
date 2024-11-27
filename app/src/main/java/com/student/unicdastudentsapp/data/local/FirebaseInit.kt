@@ -1,3 +1,4 @@
+/*
 package com.student.unicdastudentsapp.data.local;
 
 import android.content.Context;
@@ -16,12 +17,13 @@ import com.google.firebase.ktx.Firebase;
 
         override fun create(context:Context):FirebaseFirestore {
             val firestore = Firebase.firestore
-            if (BuildConfig.DEBUG) {
-                firestore.useEmulator(FIRESTORE_EMULATOR_HOST, FIRESTORE_EMULATOR_PORT)
-            }
+          //  if (BuildConfig.DEBUG) {
+         //       firestore.useEmulator(FIRESTORE_EMULATOR_HOST, FIRESTORE_EMULATOR_PORT)
+          //  }
             return firestore
         }
 
         override fun dependencies(): MutableList<Class<out Initializer<*>>> = mutableListOf()
 
 }
+*/

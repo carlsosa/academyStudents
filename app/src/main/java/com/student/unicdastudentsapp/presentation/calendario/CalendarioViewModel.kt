@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.applandeo.materialcalendarview.CalendarDay
-import com.student.unicdastudentsapp.domain.repository.InitRepository
 import com.student.unicdastudentsapp.domain.model.Event
+import com.student.unicdastudentsapp.domain.repository.EventsRepository
 
 class CalendarioViewModel : ViewModel() {
 
@@ -16,10 +16,11 @@ class CalendarioViewModel : ViewModel() {
 
 
     fun getEventDays() : List<CalendarDay>{
-       return InitRepository().getEventDays()
+       return EventsRepository().getEventDays();
     }
 
    fun findEventsByDate(cal: String): List<Event> {
-        return InitRepository().findEventsByDate(cal)
+        return EventsRepository().findEventsByDate(cal)
    }
+
 }

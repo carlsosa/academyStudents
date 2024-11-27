@@ -2,8 +2,9 @@ package com.student.unicdastudentsapp.domain.repository;
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.student.unicdastudentsapp.domain.model.Pensum
+import com.student.unicdastudentsapp.domain.model.Student
 
-public class PensumRepository {
+class PensumRepository {
 
 
     companion object {
@@ -40,6 +41,14 @@ public class PensumRepository {
                 println("Error getting Pensum documents: $exception")
             }
 
+    }
+
+    fun getPensumQuarter(student: Student, qtNumber: Int): List<String> {
+     var courses = SubjectsRepository()
+         .getSubjectsByPensumID(student.pensumID)
+         .filter { it.quarter == qtNumber }
+          .map { it.code + " " + it.name }
+        return courses
     }
 
 }

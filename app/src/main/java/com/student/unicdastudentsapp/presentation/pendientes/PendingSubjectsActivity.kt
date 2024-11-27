@@ -14,7 +14,7 @@ class PendingSubjectsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (UserActive.isUserActive()) {
-            var sub = PendingSubjectsViewModel().qt1
+            var sub = PendingSubjectsViewModel().pendingSubjects()
             val recyclerView = binding.recyclerViewPendings
             recyclerView.setHasFixedSize(true)
             val linearLayoutManager = LinearLayoutManager(this)

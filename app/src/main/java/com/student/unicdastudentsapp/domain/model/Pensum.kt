@@ -1,3 +1,9 @@
 package com.student.unicdastudentsapp.domain.model
 
-class Pensum(var pensumID: Int, var numberOfQuarter: Int, var subjets: List<Subjets>?)
+import com.google.firebase.firestore.IgnoreExtraProperties
+
+@IgnoreExtraProperties
+class Pensum(var pensumID: Int=0, var numberOfQuarter: Int=0, var subjets: List<Subjets>?){
+
+    constructor() :this( pensumID = 0)
+}

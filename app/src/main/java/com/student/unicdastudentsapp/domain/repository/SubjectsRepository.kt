@@ -72,7 +72,7 @@ class SubjectsRepository {
     }
 
     fun getSubjectByID(id: String) :Subjets {
-        var p = Subjets(0,"",0)
+        var p = Subjets("","",0)
         getSubjectByID(id){ st->
             if(st != null){
               p.id = st.id
@@ -86,6 +86,5 @@ class SubjectsRepository {
         }
         return p;
     }
-
 
 }

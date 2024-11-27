@@ -13,7 +13,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.FirebaseApp
+import com.google.firebase.firestore.FirebaseFirestore
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.ActivityMainBinding
 import com.student.unicdastudentsapp.domain.model.UserActive
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         val user = UserActive.getUser()
         if (user != null) {
             val imgView: ImageView = findViewById(R.id.imageView)
-            imgView.setImageResource(user.profileImage)
+            imgView.setImageResource(0)
             val welcomeMessage: TextView = findViewById(R.id.welcome_user_textview)
             welcomeMessage.text = StringBuilder().append("Bienvenido, ").append(user.name)
                 .append(" ").append(user.matricula).toString()

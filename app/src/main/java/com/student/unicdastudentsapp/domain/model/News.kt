@@ -1,10 +1,14 @@
 package com.student.unicdastudentsapp.domain.model
 
-import java.io.Serializable
+import com.google.firebase.firestore.IgnoreExtraProperties
 
-data class News(val id: Long, val message: String, val title: String) : Serializable {
+
+@IgnoreExtraProperties
+ class News(val id: Long, val message: String, val title: String) {
     var img: Int = 0
     var date: String = ""
     var link: String = ""
+
+    constructor() :this( message ="")
 }
 

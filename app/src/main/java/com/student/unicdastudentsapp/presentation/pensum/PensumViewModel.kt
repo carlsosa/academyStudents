@@ -9,8 +9,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.FragmentPensumBinding
-import com.student.unicdastudentsapp.domain.repository.InitRepository
 import com.student.unicdastudentsapp.domain.model.UserActive
+import com.student.unicdastudentsapp.domain.repository.PensumRepository
 
 class PensumViewModel : ViewModel() {
 
@@ -25,7 +25,7 @@ class PensumViewModel : ViewModel() {
     private fun ingSoftQt(qt: Int): List<String> {
         val user = UserActive.getUser()
         if (user != null) {
-            return InitRepository().getPensumQuarter(user, qt)
+            return PensumRepository().getPensumQuarter(user, qt)
         }
         return mutableListOf()
     }
