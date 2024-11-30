@@ -48,7 +48,7 @@ class MateriaAdapter(private val subjets: List<InscriptionSubjects>) :
         }else if(subject.code.contains("AL")){
             materiaViewHolder.logo.setImageResource(R.drawable.pc)
         }else{
-            materiaViewHolder.logo.setImageResource(R.drawable)
+            materiaViewHolder.logo.setImageResource(R.drawable.redbook)
         }
         materiaViewHolder.itemView.setOnClickListener {
             onClickListener?.onClick(idx, subject)
