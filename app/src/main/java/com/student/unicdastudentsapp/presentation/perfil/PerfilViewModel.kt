@@ -3,6 +3,7 @@ package com.student.unicdastudentsapp.presentation.perfil
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.FragmentPerfilBinding
 import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 
@@ -23,7 +24,7 @@ class PerfilViewModel : ViewModel() {
             binding.studentField.text = user.field
             binding.studentIndex.text = user.academicIndex.toString()
             binding.studentGenre.text = user.genre
-            binding.perfilimg.setImageResource(0)
+            binding.perfilimg.setImageResource(R.drawable.support)
             binding.studentMobile.text = user.phoneNum
 
         }

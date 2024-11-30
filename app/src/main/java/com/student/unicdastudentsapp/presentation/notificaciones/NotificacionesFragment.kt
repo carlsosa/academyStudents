@@ -51,16 +51,17 @@ class NotificacionesFragment : Fragment() {
             if(it != null) {
                 val adapter = NotificacionesAdapter(it)
                 recyclerView.adapter = adapter
+                adapter.setOnClickListener(object : NotificacionesAdapter.OnClickListener {
+                    override fun onClick(position: Int, model: News) {
+                        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(model.link))
+                        startActivity(browserIntent)
+                    }
+
+                })
             }
         }
 
-        adapter?.setOnClickListener(object : NotificacionesAdapter.OnClickListener {
-            override fun onClick(position: Int, model: News) {
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(model.link))
-                startActivity(browserIntent)
-            }
 
-        })
     }
 
     override fun onDestroyView() {

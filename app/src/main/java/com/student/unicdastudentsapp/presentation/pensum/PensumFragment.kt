@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.student.unicdastudentsapp.databinding.FragmentPensumBinding
@@ -31,19 +32,19 @@ class PensumFragment : Fragment() {
         return root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override  fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if(!UserActiveUseCase.isUserActive()){
             onDestroyView()
         }
         val pensumViewModel =
             viewModel
+
         // set title
         val textView: TextView = binding.q1Txt
         pensumViewModel.studyField.observe(viewLifecycleOwner) {
             textView.text = it
         }
-
         val context = requireContext()
         setInitView(context, pensumViewModel, binding)
 
@@ -62,6 +63,7 @@ class PensumFragment : Fragment() {
                 setView(context, pensumViewModel, index, binding)
             }
         })
+
 
     }
     override fun onDestroyView() {
@@ -87,5 +89,7 @@ class PensumFragment : Fragment() {
             .setInitView(context, binding)
 
     }
-
+    fun showMsg(msg: String) {
+        Toast.makeText(context,msg, Toast.LENGTH_LONG).show()
+    }
 }

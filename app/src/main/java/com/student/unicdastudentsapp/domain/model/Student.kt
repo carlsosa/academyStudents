@@ -29,5 +29,7 @@ import java.io.Serializable
     @get:Exclude
     var fullName: String = ""
         get() = "$name $lastName"
+    @get: Exclude
+    var subjets : List<Subjets>?  = null
 }
 

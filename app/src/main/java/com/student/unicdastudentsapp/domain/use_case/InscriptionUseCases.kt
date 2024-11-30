@@ -8,10 +8,11 @@ class InscriptionUseCases {
     fun getHour(ins: InscriptionSubjects): String {
         var text  = StringBuilder();
         if (ins.Day1.isNotBlank() && ins.Hora1.isNotBlank()){
-            text.append("{$ins.Day1} : ${ins.Hora1}")
+            text.append("${ins.Day1} : ${ins.Hora1}")
         }
         if (ins.Day2.isNotBlank() && ins.Hora2.isNotBlank()){
-            text.append(" \n {$ins.Day2} : ${ins.Hora2}")
+            text.append("\n")
+            text.append("${ins.Day2} : ${ins.Hora2}")
         }
         return text.toString()
     }

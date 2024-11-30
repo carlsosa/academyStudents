@@ -9,8 +9,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.FragmentPensumBinding
-import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 import com.student.unicdastudentsapp.domain.repository.PensumRepository
+import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 
 class PensumViewModel : ViewModel() {
 
@@ -22,18 +22,17 @@ class PensumViewModel : ViewModel() {
         }
     }
     val studyField: LiveData<String> = _title
+    private val _pensumRepo =  PensumRepository();
+
     private fun ingSoftQt(qt: Int, callbacks:  (List<String>)-> Unit) {
         var list = mutableListOf<String>();
-        val user = UserActiveUseCase.getUser()
-        if (user != null) {
-            PensumRepository().getPensumQuarter(user, qt){ it->
+        _pensumRepo.getPensumQuarter(qt){ it->
                 if (it != null) {
                     for(i in it){
                         list.add("${i.code} - ${i.name}")
                     }
                 }
             }
-        }
         callbacks(list)
     }
 
@@ -132,4 +131,20 @@ class PensumViewModel : ViewModel() {
         }
     }
 
+    fun initPensum(){
+        val user = UserActiveUseCase.getUser()
+        if (user != null && user.subjets.isNullOrEmpty() ) {
+            _pensumRepo.Init(user){
+              if(!it.isNullOrEmpty()){
+                  println("Encontro pensum...${user.pensumID}")
+              }else{
+                  println("no encontro el pensum ${user.pensumID}")
+              }
+            }
+        }
+
+    }
+    fun pensumIsReady() :Boolean {
+        return  _pensumRepo.subsList.isNotEmpty() || UserActiveUseCase.getUser()!!.subjets!!.isNotEmpty()
+    }
 }

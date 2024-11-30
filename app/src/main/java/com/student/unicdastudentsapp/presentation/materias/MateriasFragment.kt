@@ -43,20 +43,22 @@ class MateriasFragment : Fragment() {
         val context1 = requireContext()
         val linearLayoutManager = LinearLayoutManager(context1)
         recyclerView.layoutManager = linearLayoutManager
+        var adapter : MateriaAdapter? = null
         subjetViewModel.selection() {
             if (it != null) {
-                val adapter = MateriaAdapter(it)
+                adapter = MateriaAdapter(it)
                 recyclerView.adapter = adapter
+                adapter?.setOnClickListener(object :
+                    MateriaAdapter.OnClickListener {
+                    override fun onClick(position: Int, model: InscriptionSubjects) {
+                        val intent = Intent(context, GradeActivity::class.java)
+                        intent.putExtra("EXTRA_GRADE", model as Serializable)
+                        startActivity(intent)
+                    }
+                })
             }
         }
-        adapter?.setOnClickListener(object :
-            MateriaAdapter.OnClickListener {
-            override fun onClick(position: Int, model: InscriptionSubjects) {
-                val intent = Intent(context, GradeActivity::class.java)
-                intent.putExtra("EXTRA_GRADE", model as Serializable)
-                startActivity(intent)
-            }
-        })
+
 
     }
     override fun onDestroyView() {
