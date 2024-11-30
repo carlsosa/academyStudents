@@ -108,7 +108,7 @@
     <string name="date_rel">Fecha release</string>
     <string name="date_rel_value">31-07-2024</string>
     <string name="tel_label">Telefono</string>
-    <string name="tel_value">1 (809) 535-0665</string>
+    <string name="tel_value">1 (809) 000-0000</string>
     <string name="legal">Licencia</string>
     <string name="legal_value">MIT</string>
     <string name="web_lbl">Web</string>
@@ -128,4 +128,5 @@
     <string name="sp_text">Materias Pendientes</string>
     <string name="asig_ins_text">Asignaturas Inscritas</string>
     <string name="mp_text">Materias Pendientes</string>
+    <string name="waiting">Esperando...</string>
 </resources>

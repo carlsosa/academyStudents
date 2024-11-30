@@ -1,54 +1,16 @@
 package com.student.unicdastudentsapp.domain.repository;
 
-import com.google.firebase.firestore.FirebaseFirestore
-import com.student.unicdastudentsapp.domain.model.Pensum
 import com.student.unicdastudentsapp.domain.model.Student
+import com.student.unicdastudentsapp.domain.model.Subjets
 
 class PensumRepository {
 
 
-    companion object {
-        private const val COLNAME = "pensums";
-    }
-    private val db = FirebaseFirestore.getInstance()
-    private val collection =  db.collection(COLNAME);
-
-
-    fun getPensumByID(id: String) :Pensum {
-        var p = Pensum(0,1,null);
-        getPensum(id){ st->
-            if(st != null){
-               p.pensumID = st.pensumID
-                p.numberOfQuarter = st.numberOfQuarter
-            }
-        }
-        return p;
-    }
-
-    private fun getPensum(id :String, callback: (Pensum?) -> Unit) {
-
-        var query = collection.document(id);
-
-        query.get()
-            .addOnSuccessListener { querySnapshot ->
-
-                    val st = querySnapshot.toObject(Pensum::class.java)
-
-                    callback(st)
-            }
-            .addOnFailureListener { exception ->
-                // Handle error
-                println("Error getting Pensum documents: $exception")
-            }
-
-    }
-
-    fun getPensumQuarter(student: Student, qtNumber: Int): List<String> {
-     var courses = SubjectsRepository()
-         .getSubjectsByPensumID(student.pensumID)
-         .filter { it.quarter == qtNumber }
-          .map { it.code + " " + it.name }
-        return courses
+    fun getPensumQuarter(student: Student, qtNumber: Int, callback: (List<Subjets>?)-> Unit) {
+         SubjectsRepository()
+         .getSubjectsByPensumIDQuarter(student.pensumID,qtNumber){
+             callback(it)
+         }
     }
 
 }

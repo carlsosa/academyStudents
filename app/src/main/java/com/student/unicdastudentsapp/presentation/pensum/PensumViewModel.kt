@@ -9,25 +9,32 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.FragmentPensumBinding
-import com.student.unicdastudentsapp.domain.model.UserActive
+import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 import com.student.unicdastudentsapp.domain.repository.PensumRepository
 
 class PensumViewModel : ViewModel() {
 
     private val _title = MutableLiveData<String>().apply {
-        value = if (UserActive.isUserActive()) {
-            UserActive.getUser()?.studyField
+        value = if (UserActiveUseCase.isUserActive()) {
+            UserActiveUseCase.getUser()?.field
         } else {
             "N/A"
         }
     }
     val studyField: LiveData<String> = _title
-    private fun ingSoftQt(qt: Int): List<String> {
-        val user = UserActive.getUser()
+    private fun ingSoftQt(qt: Int, callbacks:  (List<String>)-> Unit) {
+        var list = mutableListOf<String>();
+        val user = UserActiveUseCase.getUser()
         if (user != null) {
-            return PensumRepository().getPensumQuarter(user, qt)
+            PensumRepository().getPensumQuarter(user, qt){ it->
+                if (it != null) {
+                    for(i in it){
+                        list.add("${i.code} - ${i.name}")
+                    }
+                }
+            }
         }
-        return mutableListOf()
+        callbacks(list)
     }
 
     fun setInitView(
@@ -37,15 +44,18 @@ class PensumViewModel : ViewModel() {
         val textviewQ1: TextView = binding.q1Label
         textviewQ1.text = context.getString(R.string.primer_cuatrimestre)
         val mListView1: ListView = binding.q1List
-        mListView1.adapter =
-            ArrayAdapter(context, android.R.layout.simple_list_item_1, ingSoftQt(1))
+        ingSoftQt(1) {
+            mListView1.adapter =
+                ArrayAdapter(context, android.R.layout.simple_list_item_1,it)
+        }
 
         val textviewQ2: TextView = binding.q2Label
         textviewQ2.text = context.getString(R.string.segundo_cuatrimestre)
         val mListView2: ListView = binding.q2List
 
+        ingSoftQt(2){
         mListView2.adapter =
-            ArrayAdapter(context, android.R.layout.simple_list_item_1, ingSoftQt(2))
+            ArrayAdapter(context, android.R.layout.simple_list_item_1, it)}
 
 
     }
@@ -63,47 +73,61 @@ class PensumViewModel : ViewModel() {
         when (index) {
             1 -> {
                 textviewQ1.text = context.getString(R.string.primer_cuatrimestre)
-                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(1))
+                ingSoftQt(1) {
+                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, it)}
 
                 textviewQ2.text = context.getString(R.string.segundo_cuatrimestre)
-                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(2))
+                ingSoftQt(2) {
+                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, it)}
 
             }
             2 -> {
                 textviewQ1.text = context.getString(R.string.tercer_cuatrimestre)
-                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(3))
+                ingSoftQt(3) {
+                    mListView1.adapter =
+                        ArrayAdapter(context, R.layout.simple_list_item_1, it)
+                }
 
                 textviewQ2.text = context.getString(R.string.cuarto_cuatrimestre)
-                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(4))
+                ingSoftQt(4){
+                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, it)}
 
             }
             3 -> {
                 textviewQ1.text = context.getString(R.string.quinto_cuatrimestre)
-                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(5))
+                ingSoftQt(5){
+                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1,it )}
 
                 textviewQ2.text = context.getString(R.string.sexto_cuatrimestre)
-                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(6))
+                ingSoftQt(6){
+                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, it)}
             }
             4 -> {
                 textviewQ1.text = context.getString(R.string.septimo_cuatrimestre)
-                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(7))
+                ingSoftQt(7){
+                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, it)}
 
                 textviewQ2.text = context.getString(R.string.octavo_cuatrimestre)
-                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(8))
+                ingSoftQt(8){
+                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, it)}
             }
             5 -> {
                 textviewQ1.text = context.getString(R.string.noveno_cuatrimestre)
-                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(9))
+                ingSoftQt(9){
+                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1,it )}
 
                 textviewQ2.text = context.getString(R.string.decimo_cuatrimestre)
-                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(10))
+                ingSoftQt(10){
+                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, it)}
             }
             6 -> {
                 textviewQ1.text = context.getString(R.string.undecimo_cuatrimestre)
-                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(11))
+                ingSoftQt(11){
+                mListView1.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, it)}
 
                 textviewQ2.text = context.getString(R.string.duodecimo_cuatrimestre)
-                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, ingSoftQt(12))
+                ingSoftQt(12){
+                mListView2.adapter = ArrayAdapter(context, R.layout.simple_list_item_1, it)}
             }
         }
     }

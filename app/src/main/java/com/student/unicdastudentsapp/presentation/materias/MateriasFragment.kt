@@ -9,8 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.student.unicdastudentsapp.databinding.FragmentMateriasBinding
+import com.student.unicdastudentsapp.domain.model.InscriptionSubjects
 import com.student.unicdastudentsapp.domain.model.Subjets
-import com.student.unicdastudentsapp.domain.model.UserActive
+import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 import com.student.unicdastudentsapp.presentation.grades.GradeActivity
 import java.io.Serializable
 
@@ -18,7 +19,7 @@ class MateriasFragment : Fragment() {
     private var _binding: FragmentMateriasBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MateriasViewModel by viewModels()
-
+    var adapter: MateriaAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +32,7 @@ class MateriasFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(!UserActive.isUserActive()){
+        if(!UserActiveUseCase.isUserActive()){
             onDestroyView()
         }
         val subjetViewModel =
@@ -42,18 +43,21 @@ class MateriasFragment : Fragment() {
         val context1 = requireContext()
         val linearLayoutManager = LinearLayoutManager(context1)
         recyclerView.layoutManager = linearLayoutManager
-        val adapter = MateriaAdapter(subjetViewModel.qt1)
-        recyclerView.adapter = adapter
-
-
-        adapter.setOnClickListener(object :
+        subjetViewModel.selection() {
+            if (it != null) {
+                val adapter = MateriaAdapter(it)
+                recyclerView.adapter = adapter
+            }
+        }
+        adapter?.setOnClickListener(object :
             MateriaAdapter.OnClickListener {
-            override fun onClick(position: Int, model: Subjets) {
+            override fun onClick(position: Int, model: InscriptionSubjects) {
                 val intent = Intent(context, GradeActivity::class.java)
                 intent.putExtra("EXTRA_GRADE", model as Serializable)
                 startActivity(intent)
             }
         })
+
     }
     override fun onDestroyView() {
         super.onDestroyView()

@@ -10,31 +10,16 @@ class NewsRepository {
         private const val COLNAME = "news";
     }
 
-    private val db = FirebaseFirestore.getInstance()
-    private val collection =  db.collection(COLNAME);
-
-
-
-    fun getNews() : List<News>{
-        val news = mutableListOf<News>();
-        getNews(){ s ->
-            if (s != null) {
-                for (i in s){
-                    news.add(i);
-                }
-            }
-        }
-        return news;
-    }
-
-    private fun getNews(callback: (List<News>?) -> Unit ){
+    fun getNews(callback: (List<News>?) -> Unit ){
+        val db = FirebaseFirestore.getInstance()
+        val collection =  db.collection(COLNAME);
         collection.whereEqualTo("active",true)
             .orderBy("date", Query.Direction.DESCENDING)
             .get()
-            .addOnSuccessListener { documents ->
+            .addOnCompleteListener() { documents ->
                 val news = mutableListOf<News>()
-                if(!documents.isEmpty) {
-                    for (document in documents) {
+                if(documents.isSuccessful) {
+                    for (document in documents.result) {
                         val  ps = document.toObject(News::class.java)
                         news.add(ps);
                     }

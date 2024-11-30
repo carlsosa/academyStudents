@@ -11,7 +11,7 @@ import com.applandeo.materialcalendarview.CalendarDay
 import com.applandeo.materialcalendarview.CalendarWeekDay
 import com.applandeo.materialcalendarview.listeners.OnCalendarDayClickListener
 import com.student.unicdastudentsapp.databinding.FragmentCalendarioBinding
-import com.student.unicdastudentsapp.domain.model.UserActive
+import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 import com.student.unicdastudentsapp.presentation.evento.EventActivity
 import java.io.Serializable
 import java.util.Calendar
@@ -36,31 +36,39 @@ class CalendarioFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(!UserActive.isUserActive()){
+        if(!UserActiveUseCase.isUserActive()){
             onDestroyView()
         }
         val calendarView = binding.calendarView
         val calendarioViewModel =
             ViewModelProvider(this)[CalendarioViewModel::class.java]
+        // on click
         calendarView.setOnCalendarDayClickListener(object : OnCalendarDayClickListener {
             override fun onClick(calendarDay: CalendarDay) {
                 val date = calendarDay.calendar.time.date.toString()
-                val events = calendarioViewModel.findEventsByDate(date)
-                val context = requireContext()
-                val intent = Intent(context, EventActivity::class.java)
-                if (events.isNotEmpty()) {
-                    intent.putExtra("EXTRA_EVENT", events as Serializable)
-                    startActivity(intent)
+                calendarioViewModel.findEventsByDate(date){ events->
+                    val context = requireContext()
+                    val intent = Intent(context, EventActivity::class.java)
+                    if (!events.isNullOrEmpty()) {
+                        intent.putExtra("EXTRA_EVENT", events as Serializable)
+                        startActivity(intent)
+                    }
                 }
 
+
             }
-        })
+        });
 
 
         val currentDate = Calendar.getInstance()
         calendarView.setDate(currentDate)
         calendarView.setFirstDayOfWeek(CalendarWeekDay.MONDAY)
-        calendarView.setCalendarDays(calendarioViewModel.getEventDays())
+        calendarioViewModel.getEventDays(){
+            if (it != null) {
+                calendarView.setCalendarDays(it)
+            }
+        }
+
 
     }
 

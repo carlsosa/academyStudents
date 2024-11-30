@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.student.unicdastudentsapp.databinding.FragmentNotificacionesBinding
 import com.student.unicdastudentsapp.domain.model.News
-import com.student.unicdastudentsapp.domain.model.UserActive
+import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 
 
 class NotificacionesFragment : Fragment() {
@@ -24,6 +24,7 @@ class NotificacionesFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: NotificacionesViewModel by viewModels()
+    var adapter: NotificacionesAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +37,7 @@ class NotificacionesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(!UserActive.isUserActive()){
+        if(!UserActiveUseCase.isUserActive()){
             onDestroyView()
         }
         val viewModel1 =
@@ -46,9 +47,14 @@ class NotificacionesFragment : Fragment() {
         val context = requireContext()
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerView.layoutManager = linearLayoutManager
-        val adapter = NotificacionesAdapter(viewModel1.n1)
-        recyclerView.adapter = adapter
-        adapter.setOnClickListener(object : NotificacionesAdapter.OnClickListener {
+        viewModel1.getnews {
+            if(it != null) {
+                val adapter = NotificacionesAdapter(it)
+                recyclerView.adapter = adapter
+            }
+        }
+
+        adapter?.setOnClickListener(object : NotificacionesAdapter.OnClickListener {
             override fun onClick(position: Int, model: News) {
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(model.link))
                 startActivity(browserIntent)
@@ -56,6 +62,7 @@ class NotificacionesFragment : Fragment() {
 
         })
     }
+
     override fun onDestroyView() {
 
         super.onDestroyView()

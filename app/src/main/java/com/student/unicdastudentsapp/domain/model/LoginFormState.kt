@@ -1,4 +1,4 @@
-package com.student.unicdastudentsapp.presentation.login
+package com.student.unicdastudentsapp.domain.model
 
 /**
  * Data validation state of the login form.

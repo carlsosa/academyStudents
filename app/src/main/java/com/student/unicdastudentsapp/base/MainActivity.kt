@@ -13,11 +13,11 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.firestore.FirebaseFirestore
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.ActivityMainBinding
-import com.student.unicdastudentsapp.domain.model.UserActive
+import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 import com.student.unicdastudentsapp.presentation.login.LoginActivity
+import com.student.unicdastudentsapp.util.Initialize
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +27,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        if (!UserActive.isUserActive()) {
+        // use it to initialize Firebase collections
+     //  Initialize().init()
+        if (!UserActiveUseCase.isUserActive()) {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         } else {
@@ -56,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
-        val user = UserActive.getUser()
+        val user = UserActiveUseCase.getUser()
         if (user != null) {
             val imgView: ImageView = findViewById(R.id.imageView)
             imgView.setImageResource(0)

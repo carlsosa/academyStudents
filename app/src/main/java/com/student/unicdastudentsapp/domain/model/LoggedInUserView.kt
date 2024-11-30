@@ -1,4 +1,4 @@
-package com.student.unicdastudentsapp.presentation.login
+package com.student.unicdastudentsapp.domain.model
 
 /**
  * User details post authentication that is exposed to the UI

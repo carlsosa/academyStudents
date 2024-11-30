@@ -1,6 +1,8 @@
-package com.student.unicdastudentsapp.domain.model
+package com.student.unicdastudentsapp.domain.use_case
 
-object UserActive {
+import com.student.unicdastudentsapp.domain.model.Student
+
+object UserActiveUseCase {
     private var user: Student? = null
 
     fun getUser(): Student? {

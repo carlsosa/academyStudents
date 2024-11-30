@@ -1,9 +1,13 @@
 package com.student.unicdastudentsapp.domain.model
 
+import java.io.Serializable
+
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
-data class LoggedInUser(
-    val userId: String,
-    val displayName: String
-)
+data class LoggedInUser  (
+    val userId: String="",
+    val displayName: String=""
+) : Serializable {
+    constructor() :this(userId="")
+}

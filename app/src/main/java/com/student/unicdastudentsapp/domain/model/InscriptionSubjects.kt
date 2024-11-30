@@ -1,13 +1,17 @@
 package com.student.unicdastudentsapp.domain.model
 
+import com.google.firebase.firestore.DocumentId
+import com.google.firebase.firestore.Exclude
 import com.google.firebase.firestore.IgnoreExtraProperties
+import java.io.Serializable
 
 @IgnoreExtraProperties
-class InscriptionSubjects {
-    var id =""
-    var Subject =""
-   var  inscriptionID =""
+data class InscriptionSubjects(@DocumentId var id: String ="", var Subject :String ="",
+                               var  inscriptionID: String ="",
+                               var isCompleted: Boolean =false) : Serializable {
+
     var teacherID =""
+    var teacherEmail =""
     var Day1 =""
     var Day2=""
     var Exam1= 0.0
@@ -16,8 +20,12 @@ class InscriptionSubjects {
     var HomeWorks = 0.0
     var Hora1 =""
     var Hora2 =""
-    var isCompleted =false
+    var classroom =""
+    var code =""
+    var name =""
+
     var isRetired= false
 
+    constructor() :this( isCompleted = false)
 
 }

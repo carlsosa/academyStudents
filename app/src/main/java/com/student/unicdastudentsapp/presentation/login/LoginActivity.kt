@@ -16,6 +16,7 @@ import android.widget.Toast
 import com.student.unicdastudentsapp.base.MainActivity
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.ActivityLoginBinding
+import com.student.unicdastudentsapp.domain.model.LoggedInUserView
 
 
 class LoginActivity : AppCompatActivity() {

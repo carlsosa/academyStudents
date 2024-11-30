@@ -7,9 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.student.unicdastudentsapp.R
-import com.student.unicdastudentsapp.domain.model.Subjets
+import com.student.unicdastudentsapp.domain.model.InscriptionSubjects
+import com.student.unicdastudentsapp.domain.use_case.InscriptionUseCases
 
-class MateriaAdapter(private val subjets: List<Subjets>) :
+
+class MateriaAdapter(private val subjets: List<InscriptionSubjects>) :
 
     RecyclerView.Adapter<MateriaAdapter.MateriaViewHolder>() {
     private var onClickListener: OnClickListener? = null
@@ -38,10 +40,16 @@ class MateriaAdapter(private val subjets: List<Subjets>) :
         val subject = subjets[idx]
         materiaViewHolder.name.text = StringBuilder().append(subject.code)
             .append(": " ).append(subject.name).toString()
-        materiaViewHolder.date.text = subject.dateHour
-        materiaViewHolder.profesor.text = subject.profesor?.getCompleteName()
+        materiaViewHolder.date.text = InscriptionUseCases().getHour(subject)
+        materiaViewHolder.profesor.text = subject.teacherID
         materiaViewHolder.room.text = subject.classroom
-        materiaViewHolder.logo.setImageResource(subject.logoId)
+        if(subject.code.contains("MA")) {
+            materiaViewHolder.logo.setImageResource(R.drawable.math)
+        }else if(subject.code.contains("AL")){
+            materiaViewHolder.logo.setImageResource(R.drawable.pc)
+        }else{
+            materiaViewHolder.logo.setImageResource(R.drawable)
+        }
         materiaViewHolder.itemView.setOnClickListener {
             onClickListener?.onClick(idx, subject)
         }
@@ -52,7 +60,7 @@ class MateriaAdapter(private val subjets: List<Subjets>) :
     }
 
     interface OnClickListener {
-        fun onClick(position: Int, model: Subjets)
+        fun onClick(position: Int, model: InscriptionSubjects)
 
     }
 

@@ -14,13 +14,17 @@ class CalendarioViewModel : ViewModel() {
     }
     val text: LiveData<String> = _text
 
+    fun getEventDays(callback: (List<CalendarDay>?)-> Unit)  {
+        EventsRepository().getEventDays(){
+              callback(it)
+       }
 
-    fun getEventDays() : List<CalendarDay>{
-       return EventsRepository().getEventDays();
     }
 
-   fun findEventsByDate(cal: String): List<Event> {
-        return EventsRepository().findEventsByDate(cal)
+   fun findEventsByDate(cal: String, callback: (List<Event>?) -> Unit)  {
+        EventsRepository().findEventsByDate(cal){
+            callback(it)
+        }
    }
 
 }

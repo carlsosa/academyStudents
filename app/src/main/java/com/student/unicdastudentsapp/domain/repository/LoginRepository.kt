@@ -2,7 +2,7 @@ package com.student.unicdastudentsapp.domain.repository
 
 import com.student.unicdastudentsapp.data.local.LoginDataSource
 import com.student.unicdastudentsapp.domain.model.LoggedInUser
-import com.student.unicdastudentsapp.domain.model.Result
+import com.student.unicdastudentsapp.domain.use_case.ResultLoginUseCase
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -29,11 +29,11 @@ class LoginRepository(val dataSource: LoginDataSource) {
         dataSource.logout()
     }
 
-     fun login(username: String, password: String, callback: (Result<LoggedInUser>)-> Unit) {
+     fun login(username: String, password: String, callback: (ResultLoginUseCase<LoggedInUser>)-> Unit) {
         // handle login
        dataSource.login(username, password) {
 
-           if (it is Result.Success) {
+           if (it is ResultLoginUseCase.Success) {
                setLoggedInUser(it.data)
                callback(it)
            }

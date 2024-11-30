@@ -38,10 +38,14 @@ class NotificacionesAdapter(private val newsList: List<News>) :
         val news = newsList[idx]
         notificacionesViewHolder.title.text = news.title
         notificacionesViewHolder.date.text = news.date
+        var length = news.message.length
+        if(length > 200){
+            length=200
+        }
         notificacionesViewHolder.content.text = StringBuilder()
-            .append(news.message.substring(0, 200)).append("..").toString()
+            .append(news.message.substring(0, length)).append("..").toString()
         notificacionesViewHolder.link.text = StringBuilder().append("Haga click para Leer más").toString()
-        notificacionesViewHolder.image.setImageResource(news.img)
+        notificacionesViewHolder.image.setImageResource(R.drawable.news)
         notificacionesViewHolder.itemView.setOnClickListener {
             onClickListener?.onClick(idx, news)
         }

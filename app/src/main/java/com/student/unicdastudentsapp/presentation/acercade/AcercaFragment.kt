@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.student.unicdastudentsapp.databinding.FragmentAcercaBinding
-import com.student.unicdastudentsapp.domain.model.UserActive
+import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 
 class AcercaFragment : Fragment() {
 
@@ -32,7 +32,7 @@ class AcercaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(!UserActive.isUserActive()){
+        if(!UserActiveUseCase.isUserActive()){
             onDestroyView()
         }
     }

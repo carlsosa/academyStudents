@@ -1,4 +1,4 @@
-package com.student.unicdastudentsapp.presentation.login
+package com.student.unicdastudentsapp.domain.model
 
 /**
  * Authentication result : success (user details) or error message.

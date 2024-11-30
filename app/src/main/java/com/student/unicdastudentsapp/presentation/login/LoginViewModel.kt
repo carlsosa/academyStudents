@@ -5,8 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
 import com.student.unicdastudentsapp.R
+import com.student.unicdastudentsapp.domain.model.LoggedInUserView
+import com.student.unicdastudentsapp.domain.model.LoginFormState
+import com.student.unicdastudentsapp.domain.model.LoginResult
 import com.student.unicdastudentsapp.domain.repository.LoginRepository
-import com.student.unicdastudentsapp.domain.model.Result
+import com.student.unicdastudentsapp.domain.use_case.ResultLoginUseCase
 
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
@@ -20,11 +23,13 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
      fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job
          loginRepository.login(username, password){
-             if (it is Result.Success) {
+             if (it is ResultLoginUseCase.Success) {
                 _loginResult.value =
                     LoginResult(success = LoggedInUserView(displayName = it.data.displayName))
-            } else {
-                _loginResult.value = LoginResult(error = R.string.login_failed)
+            } else if(it is ResultLoginUseCase.Error){
+                 _loginResult.value = LoginResult(error = R.string.login_failed)
+             } else {
+                _loginResult.value = LoginResult(error = R.string.waiting)
             }
         }
     }

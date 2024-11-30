@@ -1,13 +1,13 @@
-package com.student.unicdastudentsapp.domain.model
+package com.student.unicdastudentsapp.domain.use_case
 
 /**
  * A generic class that holds a value with its loading status.
  * @param <T>
  */
-sealed class Result<out T : Any> {
+sealed class ResultLoginUseCase<out T : Any> {
 
-    data class Success<out T : Any>(val data: T) : Result<T>()
-    data class Error(val exception: Exception) : Result<Nothing>()
+    data class Success<out T : Any>(val data: T) : ResultLoginUseCase<T>()
+    data class Error(val exception: Exception) : ResultLoginUseCase<Nothing>()
 
     override fun toString(): String {
         return when (this) {

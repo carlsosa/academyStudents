@@ -3,16 +3,17 @@ package com.student.unicdastudentsapp.domain.model
 import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.Exclude
 import com.google.firebase.firestore.IgnoreExtraProperties
+import java.io.Serializable
 
 @IgnoreExtraProperties
- class Student(
+  data class Student(
     @DocumentId var id: String = "",
     var name: String = "",
     var lastName: String = "",
     var phoneNum: String = "",
     var matricula: String = "",
     var age: Int = 0,
-    var studyField: String = "",
+    var field: String = "",
    // var dateInit: String = "",
     var isActive: Boolean = false,
    // var dateSuspend: String? = null,
@@ -22,7 +23,7 @@ import com.google.firebase.firestore.IgnoreExtraProperties
     var pensumID: String = "",
     var academicIndex: Double = 0.0,
     var genre: String = ""
-) {
+) : Serializable {
      constructor() :this( isActive=true)
     // excluir de BD
     @get:Exclude
