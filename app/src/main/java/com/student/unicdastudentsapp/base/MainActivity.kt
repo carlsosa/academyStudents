@@ -13,18 +13,29 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.messaging.FirebaseMessaging
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.ActivityMainBinding
 import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 import com.student.unicdastudentsapp.presentation.login.LoginActivity
-import com.student.unicdastudentsapp.util.Initialize
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var firebaseMessaging: FirebaseMessaging
     override fun onCreate(savedInstanceState: Bundle?) {
+        firebaseMessaging = FirebaseMessaging.getInstance()
+
+        firebaseMessaging.token.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val token = task.result
+                println( "Token: $token")
+                // Send token to server
+            } else {
+               println("Failed to get token")
+            }
+        }
 
         super.onCreate(savedInstanceState)
         // use it to initialize Firebase collections
