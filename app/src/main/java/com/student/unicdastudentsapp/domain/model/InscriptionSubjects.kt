@@ -1,7 +1,6 @@
 package com.student.unicdastudentsapp.domain.model
 
 import com.google.firebase.firestore.DocumentId
-import com.google.firebase.firestore.Exclude
 import com.google.firebase.firestore.IgnoreExtraProperties
 import java.io.Serializable
 
@@ -17,7 +16,7 @@ data class InscriptionSubjects(@DocumentId var id: String ="", var Subject :Stri
     var Exam1= 0.0
     var Exam2 =0.0
     var FinalExam =0.0
-    var HomeWorks = 0.0
+    var Homeworks = 0.0
     var Hora1 =""
     var Hora2 =""
     var classroom =""

@@ -30,9 +30,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                      if (xp != null && xp == true) {
                          println("Login 1")
                          loginBackground(username, password)
-
-
-
                      } else {
                          println("Usuario no existe 1")
                          _loginResult.value = LoginResult(error = R.string.userNotExists)
@@ -45,9 +42,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                  if (xp != null && xp == true) {
                      println("Login 2")
                       loginBackground(username,password)
-
-
-
                  } else {
                      println("Usuario no existe 2")
                      _loginResult.value = LoginResult(error = R.string.userNotExists)

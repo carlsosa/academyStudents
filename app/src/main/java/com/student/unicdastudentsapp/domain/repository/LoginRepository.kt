@@ -33,8 +33,6 @@ class LoginRepository(val dataSource: LoginDataSource) {
         // handle login
 
        dataSource.login(username, password) {
-           var temp = LoggedInUser("0",username)
-           setLoggedInUser(temp)
 
            if (it is ResultLoginUseCase.Success) {
                setLoggedInUser(it.data)

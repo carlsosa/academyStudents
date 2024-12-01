@@ -19,13 +19,13 @@ class InscriptionUseCases {
 
  fun  calification (i: InscriptionSubjects) : String {
      val total= round((
-             i.Exam1.plus(i.Exam2).plus(i.HomeWorks).plus(i.FinalExam)
+             i.Exam1.plus(i.Exam2).plus(i.Homeworks).plus(i.FinalExam)
              ));
      return StringBuilder().append("Primer Parcial: ").append(round(i.Exam1*100) /100)
          .append("\n")
          .append("Segundo Parcial: ").append(round(i.Exam2))
          .append("\n")
-         .append("Practicas: ").append(round(i.HomeWorks))
+         .append("Practicas: ").append(round(i.Homeworks))
          .append("\n")
          .append("Examen Final: ").append(round(i.FinalExam))
          .append("\n")
