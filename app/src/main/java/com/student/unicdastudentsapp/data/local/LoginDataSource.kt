@@ -18,13 +18,15 @@ class LoginDataSource {
          StudentRepository().getStudentByLogin(username,password) { user ->
              if(user != null ) {
                  if (user.email != "") {
-                     val userDisplat = LoggedInUser(user.id, user.name)
+                     val userDisplay = LoggedInUser(user.id, user.name)
                      UserActiveUseCase.setUser(user)
-                     callback(ResultLoginUseCase.Success(userDisplat))
+                     callback(ResultLoginUseCase.Success(userDisplay))
                  }
+             }else{
+                 callback(ResultLoginUseCase.Error(IOException("Not found")))
              }
          }
-           throw Exception();
+
         } catch (e: Throwable) {
             callback(ResultLoginUseCase.Error(IOException("Error logging in", e)))
         }
@@ -33,4 +35,6 @@ class LoginDataSource {
     fun logout() {
         // TODO: revoke authentication
     }
+
+
 }

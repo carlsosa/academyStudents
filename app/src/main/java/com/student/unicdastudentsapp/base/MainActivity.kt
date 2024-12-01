@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         val user = UserActiveUseCase.getUser()
         if (user != null) {
             val imgView: ImageView = findViewById(R.id.imageView)
-            imgView.setImageResource(0)
+            imgView.setImageResource(R.drawable.support)
             val welcomeMessage: TextView = findViewById(R.id.welcome_user_textview)
             welcomeMessage.text = StringBuilder().append("Bienvenido, ").append(user.name)
                 .append(" ").append(user.matricula).toString()

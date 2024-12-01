@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.androidx.startup.runtime)
     implementation(libs.firebase.bom)
     implementation(libs.firebase.firestore)
+    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

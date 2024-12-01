@@ -57,6 +57,8 @@ class PensumFragment : Fragment() {
         })
 
         val buttonNext = binding.btnAlante
+        buttonNext.performClick()
+        button.performClick()
         buttonNext.setOnClickListener(View.OnClickListener {
             if (index in minIndex..<maxIndex) {
                 index += minIndex

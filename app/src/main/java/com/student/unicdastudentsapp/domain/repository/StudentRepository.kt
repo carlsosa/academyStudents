@@ -21,8 +21,8 @@ class StudentRepository {
 
   private  fun getStudentByLoginV1(email :String, pass: String, callback: (Student?) -> Unit) {
         studentList = mutableListOf<Student>()
-       val db = Firebase.firestore;
-         db.collection(COLNAME)
+          val db = Firebase.firestore;
+             db.collection(COLNAME)
           .whereEqualTo("email",email)
            .whereEqualTo("password",pass)
            .whereEqualTo("isActive", true)

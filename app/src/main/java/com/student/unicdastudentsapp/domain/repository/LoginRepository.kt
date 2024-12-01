@@ -31,13 +31,20 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
      fun login(username: String, password: String, callback: (ResultLoginUseCase<LoggedInUser>)-> Unit) {
         // handle login
+
        dataSource.login(username, password) {
+           var temp = LoggedInUser("0",username)
+           setLoggedInUser(temp)
 
            if (it is ResultLoginUseCase.Success) {
                setLoggedInUser(it.data)
                callback(it)
+           }else{
+               callback(it)
            }
-           callback(it)
+
+
+
        }
 
     }
