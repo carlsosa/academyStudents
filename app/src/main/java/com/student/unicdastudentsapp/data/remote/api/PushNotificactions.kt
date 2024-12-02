@@ -17,7 +17,7 @@ class PushNotificactions : FirebaseMessagingService() {
         val calendar = Calendar.getInstance()
         val id: String = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
         val tokenMapper = hashMapOf<String, String>(
-            "date" to calendar.time.date.toString(),
+            "date" to calendar.time.toString(),
             "deviceID" to id,
             "token" to token
         )
