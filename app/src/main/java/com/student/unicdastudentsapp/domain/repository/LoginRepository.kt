@@ -29,18 +29,22 @@ class LoginRepository(val dataSource: LoginDataSource) {
         dataSource.logout()
     }
 
-     fun login(username: String, password: String, callback: (ResultLoginUseCase<LoggedInUser>)-> Unit) {
+    fun login(
+        username: String,
+        password: String,
+        callback: (ResultLoginUseCase<LoggedInUser>) -> Unit
+    ) {
         // handle login
-       dataSource.login(username, password) {
+        dataSource.login(username, password) {
 
-           if (it is ResultLoginUseCase.Success) {
-               setLoggedInUser(it.data)
-               callback(it)
-           }else{
-               callback(it)
-           }
+            if (it is ResultLoginUseCase.Success) {
+                setLoggedInUser(it.data)
+                callback(it)
+            } else {
+                callback(it)
+            }
 
-       }
+        }
 
     }
 

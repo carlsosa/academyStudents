@@ -5,7 +5,7 @@ import com.student.unicdastudentsapp.data.remote.api.FirebaseAuth.firebaseAuth
 class AuthRepository {
 
 
-    fun signIn(email: String, password: String, callback: (Boolean?)-> Unit) {
+    fun signIn(email: String, password: String, callback: (Boolean?) -> Unit) {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isSuccessful) {
                 println("Firebase Auth: Succesfully logged in")
@@ -13,11 +13,11 @@ class AuthRepository {
 
             } else
                 println("Firebase Auth: could not logged in")
-                callback(false)
+            callback(false)
         }
     }
 
-    fun logOut(){
+    fun logOut() {
         println("Logged out")
         firebaseAuth.signOut();
     }
