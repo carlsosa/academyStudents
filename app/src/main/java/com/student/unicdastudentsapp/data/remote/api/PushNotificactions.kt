@@ -1,15 +1,27 @@
 package com.student.unicdastudentsapp.data.remote.api
 
+import android.provider.Settings
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.student.unicdastudentsapp.domain.repository.FirebaseMessagingRepository
 import com.student.unicdastudentsapp.domain.use_case.PushUseCases
+import java.util.Calendar
+
 
 class PushNotificactions : FirebaseMessagingService() {
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
         Log.d("NEW_TOKEN", "Refreshed token: $token")
+        val calendar = Calendar.getInstance()
+        val id: String = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
+        val tokenMapper = hashMapOf<String, String>(
+            "date" to calendar.time.date.toString(),
+            "deviceID" to id,
+            "token" to token
+        )
+        FirebaseMessagingRepository().saveToken(tokenMapper);
         val instance = PushUseCases.getInstance()
         instance.setToken(token)
     }
