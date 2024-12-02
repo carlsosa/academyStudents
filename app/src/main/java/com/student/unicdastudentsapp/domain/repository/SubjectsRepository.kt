@@ -1,6 +1,7 @@
 package com.student.unicdastudentsapp.domain.repository
 
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.student.unicdastudentsapp.domain.model.Subjets
 import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 
@@ -16,6 +17,7 @@ class SubjectsRepository {
        val db = FirebaseFirestore.getInstance()
          val collection =  db.collection(COLNAME);
         collection.whereEqualTo("pensumID",id)
+            .orderBy("quarter", Query.Direction.ASCENDING)
             .get()
             .addOnCompleteListener { documents ->
                 if(documents.isSuccessful) {

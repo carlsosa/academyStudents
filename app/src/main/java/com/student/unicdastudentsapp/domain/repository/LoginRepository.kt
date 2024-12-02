@@ -31,7 +31,6 @@ class LoginRepository(val dataSource: LoginDataSource) {
 
      fun login(username: String, password: String, callback: (ResultLoginUseCase<LoggedInUser>)-> Unit) {
         // handle login
-
        dataSource.login(username, password) {
 
            if (it is ResultLoginUseCase.Success) {
@@ -40,8 +39,6 @@ class LoginRepository(val dataSource: LoginDataSource) {
            }else{
                callback(it)
            }
-
-
 
        }
 

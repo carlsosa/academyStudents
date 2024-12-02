@@ -1,14 +1,13 @@
 package com.student.unicdastudentsapp.presentation.pensum
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.student.unicdastudentsapp.databinding.FragmentPensumBinding
 import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 
@@ -17,11 +16,9 @@ class PensumFragment : Fragment() {
 
     private var _binding: FragmentPensumBinding? = null
     private val viewModel: PensumViewModel by viewModels()
-    private val minIndex: Int = 1
-    private val maxIndex: Int = 6
 
     private val binding get() = _binding!!
-    private var index =  1
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,64 +31,34 @@ class PensumFragment : Fragment() {
 
     override  fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(!UserActiveUseCase.isUserActive()){
-            onDestroyView()
-        }
-        val pensumViewModel =
-            viewModel
+        if(UserActiveUseCase.isUserActive()) {
 
-        // set title
-        val textView: TextView = binding.q1Txt
-        pensumViewModel.studyField.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        val context = requireContext()
-        setInitView(context, pensumViewModel, binding)
+            val pensumViewModel =
+                viewModel
 
-        val button = binding.btnAtras
-        button.setOnClickListener(View.OnClickListener {
-            if (index > minIndex) {
-                index -= minIndex
-                setView(context, pensumViewModel, index, binding)
+            // set title
+            val textView: TextView = binding.q1Txt
+            val subtitle: TextView = binding.q1Label
+            subtitle.text = "PERIODO | CURSO | CREDITOS";
+            pensumViewModel.studyField.observe(viewLifecycleOwner) {
+                textView.text = it
             }
-        })
-
-        val buttonNext = binding.btnAlante
-        buttonNext.performClick()
-        button.performClick()
-        buttonNext.setOnClickListener(View.OnClickListener {
-            if (index in minIndex..<maxIndex) {
-                index += minIndex
-                setView(context, pensumViewModel, index, binding)
+            val context = requireContext()
+            val recyclerView = binding.recyclerViewPensum
+            recyclerView.setHasFixedSize(true)
+            val linearLayoutManager = LinearLayoutManager(context)
+            recyclerView.layoutManager = linearLayoutManager
+            pensumViewModel.subjects() {
+                if (it != null) {
+                    val adapter = PensumSubjectsAdapter(it)
+                    recyclerView.adapter = adapter
+                }
             }
-        })
-
-
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-   private fun setView(
-        context: Context,
-        pensumViewModel: PensumViewModel,
-        index: Int,
-        binding: FragmentPensumBinding
-    ) {
-        pensumViewModel.setView(context, index, binding)
-    }
-
-   private fun setInitView(
-        context: Context,
-        pensumViewModel: PensumViewModel,
-        binding: FragmentPensumBinding
-    ) {
-        pensumViewModel
-            .setInitView(context, binding)
-
-    }
-    fun showMsg(msg: String) {
-        Toast.makeText(context,msg, Toast.LENGTH_LONG).show()
-    }
 }

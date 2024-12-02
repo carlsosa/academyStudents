@@ -31,7 +31,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                          println("Login 1")
                          loginBackground(username, password)
                      } else {
-                         println("Usuario no existe 1")
+                         println("Esperando respuesta del servidor")
                          _loginResult.value = LoginResult(error = R.string.userNotExists)
                      }
                  }
@@ -43,7 +43,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                      println("Login 2")
                       loginBackground(username,password)
                  } else {
-                     println("Usuario no existe 2")
+                     println("Esperando respuesta del rervidor")
                      _loginResult.value = LoginResult(error = R.string.userNotExists)
                  }
              }
