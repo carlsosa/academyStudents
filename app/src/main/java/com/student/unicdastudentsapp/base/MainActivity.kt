@@ -13,7 +13,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.messaging.FirebaseMessaging
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.ActivityMainBinding
 import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
@@ -23,8 +22,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    private lateinit var firebaseMessaging: FirebaseMessaging
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        /*
+        used to initialize Firebase Messaging
         firebaseMessaging = FirebaseMessaging.getInstance()
 
         firebaseMessaging.token.addOnCompleteListener { task ->
@@ -35,7 +36,9 @@ class MainActivity : AppCompatActivity() {
             } else {
                println("Failed to get token")
             }
-        }
+            }
+
+         */
 
         super.onCreate(savedInstanceState)
         // use it to initialize Firebase collections
