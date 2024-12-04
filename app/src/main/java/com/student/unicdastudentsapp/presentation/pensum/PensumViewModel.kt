@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.student.unicdastudentsapp.domain.model.Subjets
-import com.student.unicdastudentsapp.domain.repository.SubjectsRepository
+import com.student.unicdastudentsapp.domain.use_case.SubjectsUseCase
 import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 
-class PensumViewModel : ViewModel() {
+class PensumViewModel(private val subjectsUseCase: SubjectsUseCase) : ViewModel() {
 
     private val _title = MutableLiveData<String>().apply {
         value = if (UserActiveUseCase.isUserActive()) {
@@ -22,7 +22,7 @@ class PensumViewModel : ViewModel() {
         var userID = UserActiveUseCase.getUser()?.id
         var pensumID = UserActiveUseCase.getUser()?.pensumID
         if(userID != null && pensumID != null) {
-                SubjectsRepository().subjectsByPensumID(pensumID)
+               subjectsUseCase.subjectsByPensumID(pensumID)
                 {
                     callback(it)
                 }

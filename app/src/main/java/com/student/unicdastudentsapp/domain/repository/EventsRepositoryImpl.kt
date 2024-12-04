@@ -4,19 +4,19 @@ import com.applandeo.materialcalendarview.CalendarDay
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.student.unicdastudentsapp.R
+import com.student.unicdastudentsapp.domain.interfaces.EventsRepository
 import com.student.unicdastudentsapp.domain.model.Event
-import com.student.unicdastudentsapp.domain.use_case.EventUseCases
 import java.util.Calendar
 
-class EventsRepository {
+class EventsRepositoryImpl : EventsRepository {
 
     companion object {
         private const val COLNAME = "events";
     }
 
-    val noEvents = StringBuilder().append("No hay eventos").toString()
+    override val noEvents = StringBuilder().append("No hay eventos").toString()
 
-    private fun getEvents(callback: (List<Event>?) -> Unit) {
+    override fun getEvents(callback: (List<Event>?) -> Unit) {
         val db = FirebaseFirestore.getInstance()
         val collection = db.collection(COLNAME);
         collection.whereEqualTo("active", true)
@@ -41,26 +41,8 @@ class EventsRepository {
             }
     }
 
-    /*
-        private fun getEvenByID(id :String, callback: (Event?) -> Unit) {
 
-            var query = collection.document(id);
-
-            query.get()
-                .addOnSuccessListener { querySnapshot ->
-
-                    val st = querySnapshot.toObject(Event::class.java)
-
-                    callback(st)
-                }
-                .addOnFailureListener { exception ->
-                    // Handle error
-                    println("Error getting Pensum documents: $exception")
-                }
-
-        } */
-
-    fun getEventDays(callback: (List<CalendarDay>?) -> Unit) {
+    override fun getEventDays(callback: (List<CalendarDay>?) -> Unit) {
 
         // set calendar
         val calendarDays = mutableListOf<CalendarDay>()
@@ -83,7 +65,7 @@ class EventsRepository {
         return callback(emptyList())
     }
 
-    fun findEventsByDate(cal: String, callback: (List<Event>?) -> Unit) {
+    override fun findEventsByDate(cal: String, callback: (List<Event>?) -> Unit) {
         var events = mutableListOf<Event>()
         getEvents() { docs ->
 
@@ -109,11 +91,20 @@ class EventsRepository {
         callback(emptyList())
     }
 
-    fun getCalendarYear(): String {
-        return EventUseCases().getCalendarYear()
+    override fun getCalendarYear(): String {
+        return StringBuilder().append("CALENDARIO ADMINISTRATIVO ")
+            .append(Calendar.getInstance().get(Calendar.YEAR)).toString()
     }
 
-    fun descEvent(events: List<Event>): String {
-        return EventUseCases().descEvent(events);
+    override fun descEvent(events: List<Event>): String {
+        var eventInfo = ""
+        events.forEach {
+            eventInfo = eventInfo + "\n" + it.event
+
+        }
+        var st = StringBuilder().append("Descripción del evento:")
+            .append("\n")
+            .append(eventInfo).toString()
+        return st;
     }
 }

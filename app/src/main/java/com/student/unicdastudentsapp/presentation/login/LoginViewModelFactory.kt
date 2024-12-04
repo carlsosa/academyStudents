@@ -3,7 +3,7 @@ package com.student.unicdastudentsapp.presentation.login
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.student.unicdastudentsapp.data.local.LoginDataSource
-import com.student.unicdastudentsapp.domain.repository.LoginRepository
+import com.student.unicdastudentsapp.domain.repository.LoginRepositoryImpl
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.
@@ -15,7 +15,7 @@ class LoginViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             return LoginViewModel(
-                loginRepository = LoginRepository(
+                loginRepository = LoginRepositoryImpl(
                     dataSource = LoginDataSource()
                 )
             ) as T

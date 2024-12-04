@@ -8,20 +8,20 @@ import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.domain.model.LoggedInUserView
 import com.student.unicdastudentsapp.domain.model.LoginFormState
 import com.student.unicdastudentsapp.domain.model.LoginResult
-import com.student.unicdastudentsapp.domain.repository.AuthRepository
-import com.student.unicdastudentsapp.domain.repository.LoginRepository
+import com.student.unicdastudentsapp.domain.repository.AuthRepositoryImpl
+import com.student.unicdastudentsapp.domain.repository.LoginRepositoryImpl
 import com.student.unicdastudentsapp.domain.use_case.ResultLoginUseCase
 import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 
 
-class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
+class LoginViewModel(private val loginRepository: LoginRepositoryImpl) : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
 
     private val _loginResult = MutableLiveData<LoginResult>()
     val loginResult: LiveData<LoginResult> = _loginResult
-    var authRepo = AuthRepository()
+    var authRepo = AuthRepositoryImpl()
 
      fun login(username: String, password: String) {
         // can be launched in a separate asynchronous job

@@ -8,4 +8,5 @@ import com.google.firebase.auth.FirebaseUser
 object FirebaseAuth {
     val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
+
 }

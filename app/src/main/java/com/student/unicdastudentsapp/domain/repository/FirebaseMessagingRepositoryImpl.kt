@@ -3,10 +3,11 @@ package com.student.unicdastudentsapp.domain.repository
 import android.content.ContentValues.TAG
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
+import com.student.unicdastudentsapp.domain.interfaces.FirebaseMessagingRepository
 
-class FirebaseMessagingRepository {
+class FirebaseMessagingRepositoryImpl : FirebaseMessagingRepository {
 
-    fun saveToken( values: HashMap<String, String>){
+    override fun saveToken(values: HashMap<String, String>){
          FirebaseFirestore
              .getInstance()
              .collection("tokens")

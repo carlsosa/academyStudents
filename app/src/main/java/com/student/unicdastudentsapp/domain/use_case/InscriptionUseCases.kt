@@ -1,9 +1,11 @@
 package com.student.unicdastudentsapp.domain.use_case
 
+import com.student.unicdastudentsapp.domain.interfaces.InscriptionsRepository
 import com.student.unicdastudentsapp.domain.model.InscriptionSubjects
+import com.student.unicdastudentsapp.domain.model.Subjets
 import kotlin.math.round
 
-class InscriptionUseCases {
+class InscriptionUseCases(private val insRepo: InscriptionsRepository) {
 
     fun getHour(ins: InscriptionSubjects): String {
         var text  = StringBuilder();
@@ -17,11 +19,11 @@ class InscriptionUseCases {
         return text.toString()
     }
 
- fun  calification (i: InscriptionSubjects) : String {
+ fun  calification (i: InscriptionSubjects, callback: (String?)-> Unit) {
      val total= round((
              i.Exam1.plus(i.Exam2).plus(i.Homeworks).plus(i.FinalExam)
              ));
-     return StringBuilder().append("Primer Parcial: ").append(round(i.Exam1*100) /100)
+    var formatedText= StringBuilder().append("Primer Parcial: ").append(round(i.Exam1*100) /100)
          .append("\n")
          .append("Segundo Parcial: ").append(round(i.Exam2))
          .append("\n")
@@ -33,6 +35,7 @@ class InscriptionUseCases {
          .append("\n")
          .append("Literal: ")
          .append(getGradeLiteral(total.toInt())).toString();
+     callback(formatedText)
 
  }
 
@@ -49,4 +52,32 @@ class InscriptionUseCases {
         return "F"
     }
 
+    fun getSubjectsByInscriptionUserID(
+        userID: String,
+        callback: (List<InscriptionSubjects>?) -> Unit
+    ){
+        insRepo.getSubjectsByInscriptionUserID(userID) { it->
+            callback(it);
+        }
+    }
+
+    // pending activity
+    fun pendingSubjectsByUserID(
+        userID: String,
+        pensumID: String,
+        callback: (List<Subjets>?) -> Unit
+    ){
+        insRepo.pendingSubjectsByUserID(userID,pensumID){
+            callback(it)
+        }
+    }
+
+    fun getDetailsByIDInscription(
+        id: String,
+        callback: (List<InscriptionSubjects>?) -> Unit
+    ){
+        insRepo.getDetailsByIDInscription(id){
+            callback(it)
+        }
+    }
 }

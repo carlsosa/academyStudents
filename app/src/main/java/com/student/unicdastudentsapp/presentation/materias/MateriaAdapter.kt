@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.domain.model.InscriptionSubjects
+import com.student.unicdastudentsapp.domain.repository.InscriptionsRepositoryImpl
 import com.student.unicdastudentsapp.domain.use_case.InscriptionUseCases
 
 
@@ -40,7 +41,7 @@ class MateriaAdapter(private val subjets: List<InscriptionSubjects>) :
         val subject = subjets[idx]
         materiaViewHolder.name.text = StringBuilder().append(subject.code)
             .append(": " ).append(subject.name).toString()
-        materiaViewHolder.date.text = InscriptionUseCases().getHour(subject)
+        materiaViewHolder.date.text = InscriptionUseCases(InscriptionsRepositoryImpl()).getHour(subject)
         materiaViewHolder.profesor.text = subject.teacherID
         materiaViewHolder.room.text = subject.classroom
         if(subject.code.contains("MA")) {

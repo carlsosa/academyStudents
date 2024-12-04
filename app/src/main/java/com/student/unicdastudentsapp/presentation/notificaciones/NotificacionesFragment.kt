@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.student.unicdastudentsapp.databinding.FragmentNotificacionesBinding
 import com.student.unicdastudentsapp.domain.model.News
@@ -23,7 +23,7 @@ class NotificacionesFragment : Fragment() {
     private var _binding: FragmentNotificacionesBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: NotificacionesViewModel by viewModels()
+    private val viewModel: NotificacionesViewModel? = null
     var adapter: NotificacionesAdapter? = null
 
     override fun onCreateView(
@@ -41,7 +41,8 @@ class NotificacionesFragment : Fragment() {
             onDestroyView()
         }
         val viewModel1 =
-            viewModel
+            ViewModelProvider(this, NotificacionesViewModelFactory())
+                .get(NotificacionesViewModel::class.java)
         val recyclerView = _binding!!.recyclerViewNews
         recyclerView.setHasFixedSize(true)
         val context = requireContext()

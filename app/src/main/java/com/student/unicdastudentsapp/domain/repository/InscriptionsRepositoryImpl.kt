@@ -1,22 +1,23 @@
 package com.student.unicdastudentsapp.domain.repository
 
 import com.google.firebase.firestore.FirebaseFirestore
+import com.student.unicdastudentsapp.domain.interfaces.InscriptionsRepository
 import com.student.unicdastudentsapp.domain.model.InscriptionSubjects
 import com.student.unicdastudentsapp.domain.model.Subjets
 
-class InscriptionsRepository {
+class InscriptionsRepositoryImpl : InscriptionsRepository {
 
 
     companion object {
         private const val COLNAMEIS = "InscriptionSubjects";
     }
 
-    private val db = FirebaseFirestore.getInstance()
-    private val collectionIS = db.collection(COLNAMEIS);
+     val db = FirebaseFirestore.getInstance()
+     val collectionIS = db.collection(COLNAMEIS);
 
 
     // Materias Activity
-    fun getSubjectsByInscriptionUserID(
+    override fun getSubjectsByInscriptionUserID(
         userID: String,
         callback: (List<InscriptionSubjects>?) -> Unit
     ) {
@@ -27,7 +28,7 @@ class InscriptionsRepository {
     }
 
     // pending activity
-    fun pendingSubjectsByUserID(
+    override fun pendingSubjectsByUserID(
         userID: String,
         pensumID: String,
         callback: (List<Subjets>?) -> Unit
@@ -58,7 +59,7 @@ class InscriptionsRepository {
             }
     }
 
-    private fun getDetailsByIDInscription(
+    override fun getDetailsByIDInscription(
         id: String,
         callback: (List<InscriptionSubjects>?) -> Unit
     ) {

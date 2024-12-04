@@ -2,15 +2,16 @@ package com.student.unicdastudentsapp.domain.repository
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.student.unicdastudentsapp.domain.interfaces.NewsRepository
 import com.student.unicdastudentsapp.domain.model.News
 
-class NewsRepository {
+class NewsRepositoryImpl : NewsRepository {
 
     companion object {
         private const val COLNAME = "news";
     }
 
-    fun getNews(callback: (List<News>?) -> Unit) {
+    override fun getNews(callback: (List<News>?) -> Unit) {
         val db = FirebaseFirestore.getInstance()
         val collection = db.collection(COLNAME);
         collection.whereEqualTo("active", true)

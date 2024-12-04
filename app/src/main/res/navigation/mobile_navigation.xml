@@ -41,8 +41,19 @@
         android:id="@+id/nav_close"
         android:name="com.student.unicdastudentsapp.presentation.logout.LogOut"
         android:label="Cerrar Session" />
-    <activity
+    <fragment
         android:id="@+id/nav_pending"
-        android:name="com.student.unicdastudentsapp.presentation.pendientes.PendingSubjectsActivity"
-        android:label="Materias Pendientes" />
+        android:name="com.student.unicdastudentsapp.presentation.pendientes.PendingSubjectsFragment"
+        android:label="Materias Pendientes"
+        tools:layout="@layout/fragment_pending_subjects" />
+    <fragment
+        android:id="@+id/nav_event"
+        android:name="com.student.unicdastudentsapp.presentation.evento.EventFragment"
+        android:label="Eventos"
+        tools:layout="@layout/fragment_event" />
+    <fragment
+        android:id="@+id/nav_grade"
+        android:name="com.student.unicdastudentsapp.presentation.grades.GradeFragment"
+        android:label="Calificaciones"
+        tools:layout="@layout/fragment_grade" />
 </navigation>

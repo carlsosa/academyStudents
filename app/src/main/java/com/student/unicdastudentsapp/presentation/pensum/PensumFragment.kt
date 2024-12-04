@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.student.unicdastudentsapp.databinding.FragmentPensumBinding
 import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
@@ -15,7 +15,7 @@ import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
 class PensumFragment : Fragment() {
 
     private var _binding: FragmentPensumBinding? = null
-    private val viewModel: PensumViewModel by viewModels()
+    private val viewModel: PensumViewModel ?  =null
 
     private val binding get() = _binding!!
 
@@ -34,7 +34,8 @@ class PensumFragment : Fragment() {
         if(UserActiveUseCase.isUserActive()) {
 
             val pensumViewModel =
-                viewModel
+                ViewModelProvider(this, PensumViewModelFactory())
+                    .get(PensumViewModel::class.java)
 
             // set title
             val textView: TextView = binding.q1Txt

@@ -15,23 +15,12 @@
         android:theme="@style/Theme.UnicdaStudentsAPP"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.pendientes.PendingSubjectsActivity"
-            android:exported="false" />
-        <activity
             android:name=".presentation.logout.LogOut"
             android:exported="false" />
         <activity
             android:name=".presentation.login.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login" />
-        <activity
-            android:name=".presentation.grades.GradeActivity"
-            android:exported="false"
-            android:theme="@style/Theme.UnicdaStudentsAPP" />
-        <activity
-            android:name=".presentation.evento.EventActivity"
-            android:exported="false"
-            android:theme="@style/Theme.UnicdaStudentsAPP" />
         <activity
             android:name=".base.MainActivity"
             android:exported="true"
@@ -43,7 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".data.remote.api.PushNotificactions"
+        <service android:name=".domain.api.PushNotificactions"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>

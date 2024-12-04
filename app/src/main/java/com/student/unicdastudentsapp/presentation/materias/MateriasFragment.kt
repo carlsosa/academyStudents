@@ -1,24 +1,22 @@
 package com.student.unicdastudentsapp.presentation.materias
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.student.unicdastudentsapp.R
 import com.student.unicdastudentsapp.databinding.FragmentMateriasBinding
 import com.student.unicdastudentsapp.domain.model.InscriptionSubjects
-import com.student.unicdastudentsapp.domain.model.Subjets
 import com.student.unicdastudentsapp.domain.use_case.UserActiveUseCase
-import com.student.unicdastudentsapp.presentation.grades.GradeActivity
-import java.io.Serializable
 
 class MateriasFragment : Fragment() {
     private var _binding: FragmentMateriasBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MateriasViewModel by viewModels()
+    private val viewModel: MateriasViewModel? =null
     var adapter: MateriaAdapter? = null
 
     override fun onCreateView(
@@ -36,7 +34,8 @@ class MateriasFragment : Fragment() {
             onDestroyView()
         }
         val subjetViewModel =
-           viewModel
+            ViewModelProvider(this, MateriasViewModelFactory())
+                .get(MateriasViewModel::class.java)
 
         val recyclerView = _binding!!.recyclerView
         recyclerView.setHasFixedSize(true)
@@ -51,9 +50,7 @@ class MateriasFragment : Fragment() {
                 adapter?.setOnClickListener(object :
                     MateriaAdapter.OnClickListener {
                     override fun onClick(position: Int, model: InscriptionSubjects) {
-                        val intent = Intent(context, GradeActivity::class.java)
-                        intent.putExtra("EXTRA_GRADE", model as Serializable)
-                        startActivity(intent)
+                        launchFragmentB(model)
                     }
                 })
             }
@@ -65,6 +62,10 @@ class MateriasFragment : Fragment() {
         super.onDestroyView()
         _binding = null
 
+    }
+    private fun launchFragmentB(extra_grade: InscriptionSubjects) {
+        UserActiveUseCase.setIns(extra_grade)
+       findNavController().navigate(R.id.nav_grade)
     }
 
 }

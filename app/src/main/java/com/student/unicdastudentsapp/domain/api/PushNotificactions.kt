@@ -1,11 +1,10 @@
-package com.student.unicdastudentsapp.data.remote.api
+package com.student.unicdastudentsapp.domain.api
 
 import android.provider.Settings
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.student.unicdastudentsapp.domain.repository.FirebaseMessagingRepository
-import com.student.unicdastudentsapp.domain.use_case.PushUseCases
+import com.student.unicdastudentsapp.domain.repository.FirebaseMessagingRepositoryImpl
 import java.util.Calendar
 
 
@@ -21,9 +20,7 @@ class PushNotificactions : FirebaseMessagingService() {
             "deviceID" to id,
             "token" to token
         )
-        FirebaseMessagingRepository().saveToken(tokenMapper);
-        val instance = PushUseCases.getInstance()
-        instance.setToken(token)
+        FirebaseMessagingRepositoryImpl().saveToken(tokenMapper);
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
